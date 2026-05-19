@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Hundesalon",
+    "titleHighlight": "Beautiful Dog",
+    "subtitle": "Ihr Liebling als Beauty-Lounge und Wohlfühl-Oase — professionelle Pflege mit Herz, die Ihren Hund nicht nur schön, sondern auch gesund hält.",
+    "phone": "07231 - 37 42 100",
+    "image": null
+  },
+  "about": {
+    "title": "Mit Herz &",
+    "titleHighlight": "Leidenschaft",
+    "text1": "Willkommen im Hundesalon Beautiful Dog — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin Sabine Hornisch, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.",
+    "text2": "Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.",
+    "image": null
+  },
+  "contact": {
+    "address": "Richard-Wagner-Allee 15, 75179 Pforzheim",
+    "phone": "07231 - 37 42 100",
+    "phoneMobile": "0176 - 641 200 75",
+    "email": "kontakt@hundesalon-pforzheim.de"
+  },
+  "openingHours": [
+    { "days": "Mo – Do", "hours": "08:30 – 17:30", "isOpen": true },
+    { "days": "Fr – So", "hours": "Nach Absprache", "isOpen": true }
+  ],
+  "services": [
+    { "icon": "🚿", "title": "Baden & Föhnen", "desc": "Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten" },
+    { "icon": "✂️", "title": "Handschnitt & Styling", "desc": "Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen" },
+    { "icon": "🐩", "title": "Abscheren & Trimmen", "desc": "Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise" },
+    { "icon": "🪮", "title": "Unterwolle entfernen", "desc": "Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell" },
+    { "icon": "💅", "title": "Krallen & Ballenpflege", "desc": "Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell" },
+    { "icon": "👂", "title": "Ohrenreinigung", "desc": "Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners" },
+    { "icon": "🐾", "title": "Bürsten & Kämmen", "desc": "Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild" },
+    { "icon": "🐶", "title": "Welpen Erstschnitt", "desc": "Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start" },
+    { "icon": "🔍", "title": "Beratung & Fellanalyse", "desc": "Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes" }
+  ]
+}

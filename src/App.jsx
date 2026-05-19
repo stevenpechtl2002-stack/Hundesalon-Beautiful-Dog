@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { AdminProvider } from './context/AdminContext'
+import AdminBar from './components/admin/AdminBar'
 import LoadingScreen from './components/LoadingScreen'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -17,12 +19,12 @@ export default function App() {
   const [loaded, setLoaded] = useState(false)
 
   return (
-    <>
+    <AdminProvider>
       <AnimatePresence>
         {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
       </AnimatePresence>
-
-      <div className="font-nunito">
+      <div className="font-nunito" style={{ paddingTop: 0 }}>
+        <AdminBar />
         <Navbar />
         <main>
           <Hero />
@@ -37,6 +39,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </>
+    </AdminProvider>
   )
 }
