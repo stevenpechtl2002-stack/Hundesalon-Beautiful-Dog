@@ -91,10 +91,19 @@ export default function Footer() {
 
         <motion.div variants={row} className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-nunito text-gray-600 text-xs">© 2025 Hundesalon Beautiful Dog. Alle Rechte vorbehalten.</p>
-          <div className="flex gap-6">
+          <div className="flex gap-6 items-center">
             {['Impressum','Datenschutz','AGB'].map(l=>(
               <a key={l} href="#" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">{l}</a>
             ))}
+            <a
+              href={`${window.location.protocol}//${window.location.hostname}:3333`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-nunito text-xs px-3 py-1.5 rounded-lg transition-all"
+              style={{ background: 'rgba(255,181,216,0.12)', border: '1px solid rgba(255,181,216,0.2)', color: '#FFB5D8' }}
+              title="Admin Login">
+              🐾 Admin
+            </a>
           </div>
         </motion.div>
 

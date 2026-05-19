@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useSanityQuery } from '../hooks/useSanity'
 
 function useCountUp(target, duration = 1800, decimals = 0) {
   const [count, setCount] = useState(0)
@@ -42,7 +43,15 @@ function StatItem({ target, suffix, label, decimals = 0, duration = 1600 }) {
   )
 }
 
+const FALLBACK = {
+  heroTitle: 'Hundesalon Beautiful Dog',
+  heroSubtitle: 'Ihr Liebling als Beauty-Lounge und Wohlfühl-Oase — professionelle Pflege mit Herz, die Ihren Hund nicht nur schön, sondern auch gesund hält.',
+  phone: '07231 - 37 42 100',
+}
+
 export default function Hero() {
+  const sanity = useSanityQuery(`*[_type == "siteContent"][0]{heroTitle, heroSubtitle, phone}`)
+  const content = sanity || FALLBACK
   const [ready, setReady] = useState(false)
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
@@ -121,18 +130,18 @@ export default function Hero() {
             initial={{ opacity: 0, y: 50 }}
             animate={ready ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
-            Hundesalon<br />
+            {content.heroTitle?.split(' ')[0] || 'Hundesalon'}<br />
             <span style={{
               background: 'linear-gradient(135deg, #FFB5D8, #C5B5EA)',
               WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>Beautiful Dog</span>
+            }}>{content.heroTitle?.split(' ').slice(1).join(' ') || 'Beautiful Dog'}</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p {...stagger(0.42)}
             className="font-nunito font-400 mb-7 leading-relaxed"
             style={{ fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', maxWidth: '38ch', color: '#7a6b8a' }}>
-            Ihr Liebling als Beauty-Lounge und Wohlfühl-Oase — professionelle Pflege mit Herz, die Ihren Hund nicht nur schön, sondern auch gesund hält.
+            {content.heroSubtitle}
           </motion.p>
 
           {/* Trust chips */}
@@ -180,7 +189,7 @@ export default function Hero() {
               style={{ background: 'white', border: '1px solid #ece8f5', color: '#5a4a6a', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
               whileHover={{ scale: 1.05, boxShadow: '0 6px 20px rgba(0,0,0,0.1)' }}
               whileTap={{ scale: 0.97 }}>
-              <span>📞</span> 07231 3742100
+              <span>📞</span> {content.phone}
             </motion.a>
           </motion.div>
 

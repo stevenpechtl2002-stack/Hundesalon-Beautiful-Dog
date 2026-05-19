@@ -1,0 +1,76 @@
+export default {
+  name: 'siteContent',
+  title: 'Website Inhalte',
+  type: 'document',
+  fields: [
+    {
+      name: 'heroTitle',
+      title: 'Hero Titel (Hauptüberschrift)',
+      type: 'string',
+      initialValue: 'Hundesalon Beautiful Dog',
+    },
+    {
+      name: 'heroSubtitle',
+      title: 'Hero Untertitel',
+      type: 'text',
+      rows: 3,
+      initialValue: 'Ihr Liebling als Beauty-Lounge und Wohlfühl-Oase — professionelle Pflege mit Herz, die Ihren Hund nicht nur schön, sondern auch gesund hält.',
+    },
+    {
+      name: 'heroImage',
+      title: 'Hero Hintergrundbild',
+      type: 'image',
+      options: { hotspot: true },
+    },
+    {
+      name: 'aboutTitle',
+      title: 'Über uns Titel',
+      type: 'string',
+      initialValue: 'Mit Herz & Leidenschaft',
+    },
+    {
+      name: 'aboutText1',
+      title: 'Über uns Text (Absatz 1)',
+      type: 'text',
+      rows: 4,
+      initialValue: 'Willkommen im Hundesalon Beautiful Dog — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin Sabine Hornisch, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.',
+    },
+    {
+      name: 'aboutText2',
+      title: 'Über uns Text (Absatz 2)',
+      type: 'text',
+      rows: 4,
+      initialValue: 'Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.',
+    },
+    {
+      name: 'aboutImage',
+      title: 'Über uns Bild',
+      type: 'image',
+      options: { hotspot: true },
+    },
+    {
+      name: 'phone',
+      title: 'Telefonnummer',
+      type: 'string',
+      initialValue: '07231 - 37 42 100',
+    },
+    {
+      name: 'phoneMobile',
+      title: 'Mobilnummer',
+      type: 'string',
+      initialValue: '0176 - 641 200 75',
+    },
+    {
+      name: 'email',
+      title: 'E-Mail',
+      type: 'string',
+      initialValue: 'kontakt@hundesalon-pforzheim.de',
+    },
+    {
+      name: 'address',
+      title: 'Adresse',
+      type: 'string',
+      initialValue: 'Richard-Wagner-Allee 15, 75179 Pforzheim',
+    },
+  ],
+}

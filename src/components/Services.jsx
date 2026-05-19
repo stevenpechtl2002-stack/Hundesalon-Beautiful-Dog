@@ -1,15 +1,28 @@
 import { motion } from 'framer-motion'
+import { useSanityQuery } from '../hooks/useSanity'
 
-const services = [
-  { icon: '🚿', title: 'Baden & Föhnen', desc: 'Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten', color: '#B5EAD7', textColor: '#5ab89a' },
-  { icon: '✂️', title: 'Handschnitt & Styling', desc: 'Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen', color: '#FFB5D8', textColor: '#e07fa0' },
-  { icon: '🐩', title: 'Abscheren & Trimmen', desc: 'Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise', color: '#C5B5EA', textColor: '#9b85c4' },
-  { icon: '🪮', title: 'Unterwolle entfernen', desc: 'Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell', color: '#FFDAC1', textColor: '#d4924d' },
-  { icon: '💅', title: 'Krallen & Ballenpflege', desc: 'Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell', color: '#B5EAD7', textColor: '#5ab89a' },
-  { icon: '👂', title: 'Ohrenreinigung', desc: 'Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners', color: '#FFB5D8', textColor: '#e07fa0' },
-  { icon: '🐾', title: 'Bürsten & Kämmen', desc: 'Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild', color: '#C5B5EA', textColor: '#9b85c4' },
-  { icon: '🐶', title: 'Welpen Erstschnitt', desc: 'Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start', color: '#FFDAC1', textColor: '#d4924d' },
-  { icon: '🔍', title: 'Beratung & Fellanalyse', desc: 'Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes', color: '#B5EAD7', textColor: '#5ab89a' },
+const COLORS = [
+  { color: '#B5EAD7', textColor: '#5ab89a' },
+  { color: '#FFB5D8', textColor: '#e07fa0' },
+  { color: '#C5B5EA', textColor: '#9b85c4' },
+  { color: '#FFDAC1', textColor: '#d4924d' },
+  { color: '#B5EAD7', textColor: '#5ab89a' },
+  { color: '#FFB5D8', textColor: '#e07fa0' },
+  { color: '#C5B5EA', textColor: '#9b85c4' },
+  { color: '#FFDAC1', textColor: '#d4924d' },
+  { color: '#B5EAD7', textColor: '#5ab89a' },
+]
+
+const FALLBACK_SERVICES = [
+  { icon: '🚿', title: 'Baden & Föhnen', desc: 'Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten' },
+  { icon: '✂️', title: 'Handschnitt & Styling', desc: 'Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen' },
+  { icon: '🐩', title: 'Abscheren & Trimmen', desc: 'Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise' },
+  { icon: '🪮', title: 'Unterwolle entfernen', desc: 'Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell' },
+  { icon: '💅', title: 'Krallen & Ballenpflege', desc: 'Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell' },
+  { icon: '👂', title: 'Ohrenreinigung', desc: 'Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners' },
+  { icon: '🐾', title: 'Bürsten & Kämmen', desc: 'Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild' },
+  { icon: '🐶', title: 'Welpen Erstschnitt', desc: 'Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start' },
+  { icon: '🔍', title: 'Beratung & Fellanalyse', desc: 'Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes' },
 ]
 
 const container = {
@@ -22,6 +35,14 @@ const card = {
 }
 
 export default function Services() {
+  const sanityServices = useSanityQuery(`*[_type == "service"] | order(order asc) {title, description, icon}`)
+  const rawServices = (sanityServices && sanityServices.length > 0) ? sanityServices : FALLBACK_SERVICES
+  const services = rawServices.map((s, i) => ({
+    ...s,
+    desc: s.description || s.desc,
+    ...COLORS[i % COLORS.length],
+  }))
+
   return (
     <section id="leistungen" className="py-24" style={{ background: '#FAFAFA' }}>
       <div className="max-w-7xl mx-auto px-8 md:px-16">

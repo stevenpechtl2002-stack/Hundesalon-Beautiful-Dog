@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useSanityQuery } from '../hooks/useSanity'
+import { urlFor } from '../sanityClient'
 
 const stats = [
   { value: 500, suffix: '+', label: 'Glückliche Hunde', icon: '🐶' },
@@ -24,7 +26,15 @@ function CountUp({ target, suffix, run }) {
   return <span>{isFloat ? val.toFixed(1) : val}{suffix}</span>
 }
 
+const FALLBACK = {
+  aboutTitle: 'Mit Herz & Leidenschaft',
+  aboutText1: 'Willkommen im Hundesalon Beautiful Dog — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin Sabine Hornisch, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.',
+  aboutText2: 'Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.',
+}
+
 export default function About() {
+  const sanity = useSanityQuery(`*[_type == "siteContent"][0]{aboutTitle, aboutText1, aboutText2, aboutImage}`)
+  const content = sanity || FALLBACK
   const sectionRef = useRef(null)
   const [run, setRun] = useState(false)
 
@@ -55,8 +65,8 @@ export default function About() {
           </div>
 
           <div className="space-y-4 font-nunito text-gray-500 leading-relaxed">
-            <p>Willkommen im <strong className="text-gray-800">Hundesalon Beautiful Dog</strong> — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin <strong className="text-gray-800">Sabine Hornisch</strong>, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.</p>
-            <p>Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.</p>
+            <p>{content.aboutText1}</p>
+            <p>{content.aboutText2}</p>
           </div>
 
           {/* Stats */}
