@@ -82,7 +82,7 @@ export default function Footer() {
               ))}
             </div>
             <motion.a href="#buchen" className="inline-block mt-6 font-nunito font-700 text-sm px-5 py-2.5 rounded-xl text-white"
-              style={{ background:'linear-gradient(135deg,#FFB5D8,#C5B5EA)' }}
+              style={{ background:'white', color:'#1e1a16' }}
               whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}>
               Jetzt buchen 🐾
             </motion.a>

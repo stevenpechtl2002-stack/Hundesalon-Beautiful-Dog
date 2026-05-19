@@ -46,7 +46,7 @@ function SliderCard({ pair, index }) {
           fallback={<img src={FALLBACK_AFTER} alt="Nachher" className="absolute inset-0 w-full h-full object-cover" />}
         />
         <div className="absolute top-3 right-3 z-10 glass rounded-xl px-3 py-1 pointer-events-none">
-          <span className="font-nunito font-700 text-xs" style={{ color: '#8dd5bb' }}>NACHHER ✨</span>
+          <span className="font-nunito font-700 text-xs" style={{ color: '#6b6055' }}>NACHHER ✨</span>
         </div>
 
         {/* Before */}
@@ -81,10 +81,10 @@ export default function BeforeAfter() {
   const { beforeAfter } = content
 
   return (
-    <section className="py-24" style={{ background: 'linear-gradient(135deg, #FFB5D815 0%, #B5EAD715 100%)' }}>
+    <section className="py-24" style={{ background: '#FAFAFA' }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block font-nunito text-sm font-700 tracking-widest uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: '#FFDAC120', color: '#f0aa80' }}>
+          <span className="inline-block font-nunito text-sm font-700 tracking-widest uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: '#f0ede8', color: '#7a6e65' }}>
             <EditableText path="beforeAfter.label">{beforeAfter.label}</EditableText>
           </span>
           <h2 className="font-pacifico text-4xl md:text-5xl text-gray-800 mt-2">

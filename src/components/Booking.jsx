@@ -3,14 +3,14 @@ import { motion } from 'framer-motion'
 export default function Booking() {
   return (
     <section id="buchen" className="py-24"
-      style={{ background: 'linear-gradient(160deg, #fff 0%, #FFF5FA 100%)' }}>
+      style={{ background: '#FAFAFA' }}>
       <div className="max-w-2xl mx-auto px-8 md:px-16">
 
         <motion.div className="text-center mb-12"
           initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
           <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full"
-            style={{ background: '#FFB5D818', color: '#FFB5D8' }}>Termin buchen</span>
+            style={{ background: '#f0ede8', color: '#7a6e65' }}>Termin buchen</span>
           <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900 mt-2">Ihren Wunschtermin sichern</h2>
           <p className="font-nunito text-gray-400 mt-4">Wählen Sie einfach Ihren Wunschtermin</p>
         </motion.div>

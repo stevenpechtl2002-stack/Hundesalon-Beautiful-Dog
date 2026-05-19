@@ -16,7 +16,7 @@ export default function AdminBar() {
   if (isAdmin) return (
     <div style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999,
-      background: 'linear-gradient(135deg,#FFB5D8,#C5B5EA)',
+      background: '#1e1a16',
       padding: '10px 24px', display: 'flex', alignItems: 'center',
       justifyContent: 'space-between', boxShadow: '0 2px 20px rgba(255,181,216,0.4)',
       fontFamily: 'sans-serif'
@@ -27,7 +27,7 @@ export default function AdminBar() {
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         {saveMsg && <span style={{ color: 'white', fontSize: 13 }}>{saveMsg}</span>}
         <button onClick={saveContent} disabled={saving} style={{
-          background: 'white', color: '#e07fa0', border: 'none', borderRadius: 10,
+          background: 'white', color: '#1e1a16', border: 'none', borderRadius: 10,
           padding: '8px 20px', fontWeight: 700, fontSize: 13, cursor: 'pointer'
         }}>
           {saving ? 'Speichert...' : '💾 Speichern'}
@@ -46,10 +46,10 @@ export default function AdminBar() {
         onClick={() => setShowLogin(true)}
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
-          background: 'linear-gradient(135deg,#FFB5D8,#C5B5EA)',
+          background: '#1e1a16',
           color: 'white', border: 'none', borderRadius: 50,
           width: 52, height: 52, fontSize: 20, cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(255,181,216,0.5)'
+          boxShadow: '0 4px 20px rgba(0,0,0,0.25)'
         }}
         title="Admin Login"
       >🐾</button>
@@ -66,7 +66,7 @@ export default function AdminBar() {
             <div style={{ textAlign: 'center', marginBottom: 24 }}>
               <div style={{ fontSize: 40, marginBottom: 8 }}>🐾</div>
               <h2 style={{ margin: 0, color: '#1a1025', fontSize: 20, fontWeight: 700 }}>Admin Login</h2>
-              <p style={{ color: '#9b85c4', fontSize: 13, marginTop: 4 }}>Hundesalon Beautiful Dog</p>
+              <p style={{ color: '#7a6e65', fontSize: 13, marginTop: 4 }}>Hundesalon Beautiful Dog</p>
             </div>
             <input
               type="password"
@@ -80,11 +80,11 @@ export default function AdminBar() {
                 marginBottom: 8
               }}
             />
-            {error && <p style={{ color: '#e07fa0', fontSize: 13, margin: '4px 0 8px' }}>{error}</p>}
+            {error && <p style={{ color: '#1e1a16', fontSize: 13, margin: '4px 0 8px' }}>{error}</p>}
             <button type="submit" style={{
               width: '100%', padding: '12px', borderRadius: 12, fontSize: 15,
               fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: 8,
-              background: 'linear-gradient(135deg,#FFB5D8,#C5B5EA)', color: 'white'
+              background: '#1e1a16', color: 'white'
             }}>Einloggen</button>
           </form>
         </div>

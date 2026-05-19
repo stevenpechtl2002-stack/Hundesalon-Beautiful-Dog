@@ -28,7 +28,7 @@ export default function Instagram() {
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
           <div>
             <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full"
-              style={{ background: '#FFB5D818', color: '#FFB5D8' }}>
+              style={{ background: '#f0ede8', color: '#7a6e65' }}>
               <EditableText path="instagram.label">{instagram.label}</EditableText>
             </span>
             <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900 mt-2">
@@ -38,7 +38,7 @@ export default function Instagram() {
           <motion.a href={instagram.url} target="_blank" rel="noopener noreferrer"
             className="font-nunito font-700 text-sm px-6 py-3 rounded-2xl text-gray-600 self-start whitespace-nowrap flex items-center gap-2"
             style={{ background: '#f8f8f8', border: '1px solid #eee' }}
-            whileHover={{ scale: 1.04, background: 'linear-gradient(135deg,#FFB5D8,#C5B5EA)', color: 'white', border: '1px solid transparent' }}>
+            whileHover={{ scale: 1.04, background: '#1e1a16', color: 'white', border: '1px solid transparent' }}>
             Folgen
           </motion.a>
         </motion.div>

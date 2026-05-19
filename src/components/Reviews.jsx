@@ -12,7 +12,7 @@ function Card({ r, index }) {
         "<EditableText path={`reviews.items.${index}.text`} tag="span">{r.text}</EditableText>"
       </p>
       <div className="flex items-center gap-3 pt-2 border-t border-gray-50">
-        <div className="w-9 h-9 rounded-full flex items-center justify-center text-lg" style={{ background: '#FFB5D815' }}>
+        <div className="w-9 h-9 rounded-full flex items-center justify-center text-lg" style={{ background: '#f5f3f0' }}>
           <EditableText path={`reviews.items.${index}.avatar`} tag="span">{r.avatar}</EditableText>
         </div>
         <div>
@@ -54,7 +54,7 @@ export default function Reviews() {
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
           <div>
             <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full"
-              style={{ background: '#FFB5D818', color: '#FFB5D8' }}>
+              style={{ background: '#f0ede8', color: '#7a6e65' }}>
               <EditableText path="reviews.label">{reviews.label}</EditableText>
             </span>
             <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900 mt-2">

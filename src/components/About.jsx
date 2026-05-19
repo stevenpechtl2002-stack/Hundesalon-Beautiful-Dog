@@ -67,9 +67,9 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
             {stats.map((s, i) => (
-              <div key={i} className="rounded-2xl p-4 text-center" style={{ background: 'linear-gradient(135deg, #FFB5D810, #C5B5EA10)', border: '1px solid #FFB5D820' }}>
+              <div key={i} className="rounded-2xl p-4 text-center" style={{ background: 'white', border: '1px solid #eeebe6', boxShadow: '0 2px 12px rgba(0,0,0,0.05)' }}>
                 <div className="text-xl mb-1">{s.icon}</div>
-                <div className="font-pacifico text-2xl md:text-3xl" style={{ color: '#FFB5D8' }}>
+                <div className="font-pacifico text-2xl md:text-3xl" style={{ color: '#1e1a16' }}>
                   <CountUp target={s.value} suffix={s.suffix} run={run} />
                 </div>
                 <p className="font-nunito text-gray-400 text-xs mt-1 font-600">{s.label}</p>
