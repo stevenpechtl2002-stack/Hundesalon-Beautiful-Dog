@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useSanityQuery } from '../hooks/useSanity'
+import { urlFor } from '../sanityClient'
 
 function useCountUp(target, duration = 1800, decimals = 0) {
   const [count, setCount] = useState(0)
@@ -50,7 +51,7 @@ const FALLBACK = {
 }
 
 export default function Hero() {
-  const sanity = useSanityQuery(`*[_type == "siteContent"][0]{heroTitle, heroSubtitle, phone}`)
+  const sanity = useSanityQuery(`*[_type == "siteContent"][0]{heroTitle, heroSubtitle, phone, heroImage}`)
   const content = sanity || FALLBACK
   const [ready, setReady] = useState(false)
   const rawX = useMotionValue(0)
@@ -94,15 +95,10 @@ export default function Hero() {
         animate={ready ? { opacity: 1 } : {}}
         transition={{ delay: 0.2, duration: 1.2 }}>
 
-        <video
-          src="/hund.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ display: 'block' }}
-        />
+        {content.heroImage
+          ? <img src={urlFor(content.heroImage).width(1400).url()} alt="Hero" className="w-full h-full object-cover" style={{ display: 'block' }} />
+          : <video src="/hund.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" style={{ display: 'block' }} />
+        }
 
         {/* Gradient mask: left edge only */}
         <div className="absolute inset-0 pointer-events-none" style={{
@@ -212,14 +208,10 @@ export default function Hero() {
         transition={{ delay: 0.5, duration: 0.8 }}>
         <div className="rounded-3xl overflow-hidden w-full"
           style={{ aspectRatio: '4/3', boxShadow: '0 12px 40px rgba(255,181,216,0.25)' }}>
-          <video
-            src="/hund.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          />
+          {content.heroImage
+            ? <img src={urlFor(content.heroImage).width(800).url()} alt="Hero" className="w-full h-full object-cover" />
+            : <video src="/hund.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+          }
         </div>
       </motion.div>
 

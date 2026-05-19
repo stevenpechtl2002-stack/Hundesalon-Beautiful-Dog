@@ -92,14 +92,10 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
 
           <div className="rounded-[2.5rem] overflow-hidden relative" style={{ height: 520 }}>
-            <video
-              src="/husky.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            {content.aboutImage
+              ? <img src={urlFor(content.aboutImage).width(800).url()} alt="Über uns" className="w-full h-full object-cover" />
+              : <video src="/husky.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            }
           </div>
 
           <motion.div className="absolute -bottom-6 -left-6 glass-pink rounded-3xl px-5 py-4 shadow-lg"
