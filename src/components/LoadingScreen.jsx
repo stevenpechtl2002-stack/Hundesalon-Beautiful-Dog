@@ -63,7 +63,7 @@ export default function LoadingScreen({ onComplete }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
           >
-            Hundesalon Fellraum
+            Beautiful Dog
           </motion.h1>
           <motion.p
             className="font-nunito text-gray-400 mt-2 text-sm tracking-widest uppercase"
@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.4 }}
           >
-            Ihr Liebling in den besten Händen
+            Hundesalon · Pforzheim
           </motion.p>
         </motion.div>
       )}
