@@ -65,7 +65,6 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#ffffff', paddingTop: isAdmin ? 52 : 0 }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 80% at 80% 50%, #faf8f5 0%, #ffffff 55%)' }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 50% 60% at 10% 40%, #f5f3f0 0%, transparent 60%)' }} />
 
       {/* Desktop media */}
       <motion.div className="absolute top-0 right-0 h-full hidden md:block" style={{ width: '70%' }}
