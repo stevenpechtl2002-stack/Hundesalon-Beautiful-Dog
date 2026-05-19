@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const stats = [
   { value: 500, suffix: '+', label: 'Glückliche Hunde', icon: '🐶' },
-  { value: 8,   suffix: ' J.', label: 'Erfahrung', icon: '🏆' },
+  { value: 15,  suffix: ' J.', label: 'Erfahrung', icon: '🏆' },
   { value: 4.9, suffix: '★', label: 'Bewertung', icon: '⭐' },
 ]
 
@@ -55,8 +55,8 @@ export default function About() {
           </div>
 
           <div className="space-y-4 font-nunito text-gray-500 leading-relaxed">
-            <p>Willkommen im <strong className="text-gray-800">Hundesalon Fellraum</strong> — dem Ort, wo jeder Hund wie ein König behandelt wird. Seit 2015 pflegen wir Vierbeiner aller Rassen mit professionellem Know-how und echter Zuneigung.</p>
-            <p>Unser Team aus zertifizierten Hundepflegern nimmt sich Zeit für jeden Hund. Wir schaffen eine entspannte Atmosphäre, damit der Friseurbesuch kein Stress wird — sondern ein Highlight der Woche.</p>
+            <p>Willkommen im <strong className="text-gray-800">Hundesalon Beautiful Dog</strong> — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin <strong className="text-gray-800">Sabine Hornisch</strong>, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.</p>
+            <p>Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.</p>
           </div>
 
           {/* Stats */}
@@ -94,7 +94,7 @@ export default function About() {
 
           <motion.div className="absolute -bottom-6 -left-6 glass-pink rounded-3xl px-5 py-4 shadow-lg"
             animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}>
-            <p className="font-pacifico text-lg" style={{ color: '#FFB5D8' }}>❤️ Seit 2015</p>
+            <p className="font-pacifico text-lg" style={{ color: '#FFB5D8' }}>❤️ Seit über 15 Jahren</p>
             <p className="font-nunito text-gray-500 text-xs font-600">Mit Liebe dabei</p>
           </motion.div>
 

@@ -8,7 +8,6 @@ import Services from './components/Services'
 import About from './components/About'
 import BeforeAfter from './components/BeforeAfter'
 import Reviews from './components/Reviews'
-import Pricing from './components/Pricing'
 import Location from './components/Location'
 import Booking from './components/Booking'
 import Instagram from './components/Instagram'
@@ -31,7 +30,6 @@ export default function App() {
           <Services />
           <About />
           <BeforeAfter />
-          <Pricing />
           <Reviews />
           <Booking />
           <Location />

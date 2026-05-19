@@ -12,7 +12,7 @@ export default function Location() {
             Unser Salon
           </span>
           <h2 className="font-pacifico text-3xl md:text-4xl text-gray-900 mt-2">
-            Besuchen Sie uns in Köln 📍
+            Besuchen Sie uns in Pforzheim 📍
           </h2>
         </motion.div>
 
@@ -25,7 +25,7 @@ export default function Location() {
             initial={{ opacity:0, x:-30 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}>
             <iframe
               title="Hundesalon Fellraum Standort"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=6.9837824,50.9471582,7.0037824,50.9671582&layer=mapnik&marker=50.9571582,6.9937824"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=8.6890,48.8820,8.7290,48.9020&layer=mapnik&marker=48.8921,8.7090"
               className="w-full h-full border-0"
               style={{ borderRadius:24 }}
             />
@@ -42,16 +42,16 @@ export default function Location() {
                   🐾
                 </div>
                 <div>
-                  <h3 className="font-pacifico text-xl text-gray-900">Hundesalon Fellraum</h3>
-                  <p className="font-nunito text-gray-400 text-sm">Köln-Mülheim</p>
+                  <h3 className="font-pacifico text-xl text-gray-900">Hundesalon Beautiful Dog</h3>
+                  <p className="font-nunito text-gray-400 text-sm">Pforzheim</p>
                 </div>
               </div>
 
               <div className="space-y-4 font-nunito text-sm">
                 {[
-                  { icon:'📍', label:'Adresse', value:'Deutz-Mülheimer Str. 179, 51063 Köln' },
-                  { icon:'📞', label:'Telefon', value:'0160 99050581', href:'tel:016099050581' },
-                  { icon:'✉️', label:'E-Mail', value:'Bitte eintragen', href:null },
+                  { icon:'📍', label:'Adresse', value:'Richard-Wagner-Allee 15, 75179 Pforzheim' },
+                  { icon:'📞', label:'Telefon', value:'07231 - 37 42 100', href:'tel:072313742100' },
+                  { icon:'✉️', label:'E-Mail', value:'kontakt@hundesalon-pforzheim.de', href:'mailto:kontakt@hundesalon-pforzheim.de' },
                 ].map(({icon,label,value,href}) => (
                   <div key={label} className="flex items-start gap-3">
                     <span className="text-base mt-0.5">{icon}</span>
@@ -70,9 +70,8 @@ export default function Location() {
                 <p className="font-nunito font-700 text-gray-700 text-sm mb-3">Öffnungszeiten</p>
                 <div className="space-y-2">
                   {[
-                    { days:'Mo – Fr', time:'09:00 – 18:00', open:true },
-                    { days:'Samstag', time:'09:00 – 15:00', open:true },
-                    { days:'Sonntag', time:'Geschlossen', open:false },
+                    { days:'Mo – Do', time:'08:30 – 17:30', open:true },
+                    { days:'Fr – So', time:'Nach Absprache', open:true },
                   ].map(({days,time,open}) => (
                     <div key={days} className="flex justify-between items-center">
                       <span className="font-nunito text-gray-500 text-sm">{days}</span>
@@ -84,7 +83,7 @@ export default function Location() {
 
               {/* Google Maps link */}
               <motion.a
-                href="https://www.google.com/maps/place/Hundesalon+Fellraum/@50.9571582,6.9912075,17z"
+                href="https://www.google.com/maps/search/Richard-Wagner-Allee+15,+75179+Pforzheim"
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 rounded-xl font-nunito font-700 text-sm"
                 style={{ background:'linear-gradient(135deg,#FFB5D810,#C5B5EA10)', border:'1px solid #FFB5D830', color:'#c07090' }}

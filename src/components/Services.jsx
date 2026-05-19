@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion'
 
 const services = [
-  { icon: '🚿', title: 'Waschen & Föhnen', desc: 'Sanfte Reinigung mit hochwertigen Naturprodukten', price: 'ab 29€', color: '#B5EAD7', textColor: '#5ab89a' },
-  { icon: '✂️', title: 'Scheren & Stylen', desc: 'Rassengerechter Schnitt nach Ihren Wünschen', price: 'ab 39€', color: '#FFB5D8', textColor: '#e07fa0' },
-  { icon: '💅', title: 'Krallen schneiden', desc: 'Professionelle Krallenpflege — sanft und sicher', price: 'ab 15€', color: '#C5B5EA', textColor: '#9b85c4' },
-  { icon: '👂', title: 'Ohren reinigen', desc: 'Sanfte Ohrenreinigung für mehr Wohlbefinden', price: 'ab 12€', color: '#FFDAC1', textColor: '#d4924d' },
-  { icon: '✨', title: 'Vollpflege Paket', desc: 'Das komplette Rundum-Paket für Ihren Liebling', price: 'ab 69€', color: '#FFB5D8', textColor: '#e07fa0' },
-  { icon: '🐶', title: 'Welpen Erstschnitt', desc: 'Behutsamer erster Friseurbesuch für Welpen', price: 'ab 25€', color: '#B5EAD7', textColor: '#5ab89a' },
+  { icon: '🚿', title: 'Baden & Föhnen', desc: 'Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten', color: '#B5EAD7', textColor: '#5ab89a' },
+  { icon: '✂️', title: 'Handschnitt & Styling', desc: 'Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen', color: '#FFB5D8', textColor: '#e07fa0' },
+  { icon: '🐩', title: 'Abscheren & Trimmen', desc: 'Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise', color: '#C5B5EA', textColor: '#9b85c4' },
+  { icon: '🪮', title: 'Unterwolle entfernen', desc: 'Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell', color: '#FFDAC1', textColor: '#d4924d' },
+  { icon: '💅', title: 'Krallen & Ballenpflege', desc: 'Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell', color: '#B5EAD7', textColor: '#5ab89a' },
+  { icon: '👂', title: 'Ohrenreinigung', desc: 'Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners', color: '#FFB5D8', textColor: '#e07fa0' },
+  { icon: '🐾', title: 'Bürsten & Kämmen', desc: 'Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild', color: '#C5B5EA', textColor: '#9b85c4' },
+  { icon: '🐶', title: 'Welpen Erstschnitt', desc: 'Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start', color: '#FFDAC1', textColor: '#d4924d' },
+  { icon: '🔍', title: 'Beratung & Fellanalyse', desc: 'Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes', color: '#B5EAD7', textColor: '#5ab89a' },
 ]
 
 const container = {
@@ -29,7 +32,7 @@ export default function Services() {
           <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full"
             style={{ background: '#B5EAD720', color: '#8dd5bb' }}>Leistungen</span>
           <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900">Alles für Ihren Liebling</h2>
-          <p className="font-nunito text-gray-400 mt-3 text-sm">Professionelle Pflege mit Herz — für jede Rasse und Größe</p>
+          <p className="font-nunito text-gray-400 mt-3 text-sm">Professionelle Pflege mit Herz — spezialisiert auf kleine und mittelgroße Rassen</p>
         </motion.div>
 
         <motion.div
@@ -52,13 +55,12 @@ export default function Services() {
                 <p className="font-nunito text-gray-400 text-sm leading-relaxed">{s.desc}</p>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-                <span className="font-pacifico text-xl" style={{ color: s.textColor }}>{s.price}</span>
+              <div className="flex items-center justify-end pt-3 border-t border-gray-50">
                 <motion.a href="#buchen"
                   className="font-nunito font-700 text-xs px-4 py-2 rounded-xl text-white"
                   style={{ background: s.textColor }}
                   whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}>
-                  Buchen
+                  Termin anfragen
                 </motion.a>
               </div>
             </motion.div>
