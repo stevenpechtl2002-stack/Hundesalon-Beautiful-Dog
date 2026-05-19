@@ -63,17 +63,19 @@ export default function Hero() {
   const stagger = (delay) => ({ initial: { opacity: 0, y: 28 }, animate: ready ? { opacity: 1, y: 0 } : {}, transition: { delay, duration: 0.75, ease: [0.22, 1, 0.36, 1] } })
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#ffffff', paddingTop: isAdmin ? 52 : 0 }}>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 80% at 80% 50%, #faf8f5 0%, #ffffff 55%)' }} />
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#f5ece0', paddingTop: isAdmin ? 52 : 0 }}>
 
-      {/* Desktop media */}
-      <motion.div className="absolute top-0 right-0 h-full hidden md:block" style={{ width: '70%' }}
-        initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ delay: 0.2, duration: 1.2 }}>
+      {/* Full-bleed background image */}
+      <motion.div className="absolute inset-0"
+        initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ delay: 0.1, duration: 1.2 }}>
         <EditableImage path="hero.image" src={hero.image} alt="Hero" className="w-full h-full object-cover"
-          style={{ display: 'block' }}
-          fallback={<video src="/hund.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" style={{ display: 'block' }} />}
+          fallback={<video src="/hund.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />}
         />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 12%)' }} />
+        {/* White gradient overlay so text on left is readable */}
+        <div className="absolute inset-0 pointer-events-none hidden md:block"
+          style={{ background: 'linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.82) 38%, rgba(255,255,255,0.1) 60%, transparent 75%)' }} />
+        <div className="absolute inset-0 pointer-events-none md:hidden"
+          style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 50%, rgba(255,255,255,0.6) 100%)' }} />
       </motion.div>
 
       {/* Content */}
@@ -136,15 +138,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Mobile media */}
-      <motion.div className="md:hidden w-full px-6 pb-10" initial={{ opacity: 0, y: 20 }} animate={ready ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5, duration: 0.8 }}>
-        <div className="rounded-3xl overflow-hidden w-full" style={{ aspectRatio: '4/3', boxShadow: '0 12px 40px rgba(0,0,0,0.10)' }}>
-          <EditableImage path="hero.image" src={hero.image} alt="Hero" className="w-full h-full object-cover"
-            fallback={<video src="/hund.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />}
-          />
-        </div>
-      </motion.div>
 
       <motion.div className="absolute hidden md:flex items-center gap-2 px-4 py-2.5 rounded-2xl"
         style={{ right: '6%', top: '22%', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(16px)', border: '1px solid #e8e2db', boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}
