@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useAdmin } from '../context/AdminContext'
+import EditableText from './admin/EditableText'
 
 const links = [
   { label: 'Leistungen', href: '#leistungen' },
@@ -10,6 +12,7 @@ const links = [
 ]
 
 export default function Navbar() {
+  const { content } = useAdmin()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -44,7 +47,7 @@ export default function Navbar() {
           </svg>
         </motion.div>
         <span className="font-pacifico text-xl" style={{ color: scrolled ? '#333' : 'white' }}>
-          Beautiful Dog
+          <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'Beautiful Dog'}</EditableText>
         </span>
       </a>
 

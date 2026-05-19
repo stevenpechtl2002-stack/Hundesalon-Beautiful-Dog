@@ -20,7 +20,8 @@ const card = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transiti
 export default function Services() {
   const { content, updateService } = useAdmin()
   if (!content) return null
-  const services = content.services.map((s, i) => ({ ...s, ...COLORS[i % COLORS.length] }))
+  const raw = content.services?.items || content.services || []
+  const services = raw.map((s, i) => ({ ...s, ...COLORS[i % COLORS.length] }))
 
   return (
     <section id="leistungen" className="py-24" style={{ background: '#FAFAFA' }}>
@@ -29,8 +30,12 @@ export default function Services() {
           initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
           <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: '#B5EAD720', color: '#8dd5bb' }}>Leistungen</span>
-          <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900">Alles für Ihren Liebling</h2>
-          <p className="font-nunito text-gray-400 mt-3 text-sm">Professionelle Pflege mit Herz — spezialisiert auf kleine und mittelgroße Rassen</p>
+          <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900">
+            <EditableText path="services.title">{content.services?.title || 'Alles für Ihren Liebling'}</EditableText>
+          </h2>
+          <p className="font-nunito text-gray-400 mt-3 text-sm">
+            <EditableText path="services.subtitle">{content.services?.subtitle || 'Professionelle Pflege mit Herz — spezialisiert auf kleine und mittelgroße Rassen'}</EditableText>
+          </p>
         </motion.div>
 
         <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }}>
@@ -42,10 +47,10 @@ export default function Services() {
                 {s.icon}
               </div>
               <div className="flex-1">
-                <EditableText path={`services.${i}.title`} tag="h3" className="font-nunito font-800 text-gray-800 mb-2">
+                <EditableText path={`services.items.${i}.title`} tag="h3" className="font-nunito font-800 text-gray-800 mb-2">
                   {s.title}
                 </EditableText>
-                <EditableText path={`services.${i}.desc`} tag="p" className="font-nunito text-gray-400 text-sm leading-relaxed">
+                <EditableText path={`services.items.${i}.desc`} tag="p" className="font-nunito text-gray-400 text-sm leading-relaxed">
                   {s.desc}
                 </EditableText>
               </div>

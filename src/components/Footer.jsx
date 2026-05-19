@@ -48,7 +48,7 @@ export default function Footer() {
               <h3 className="font-pacifico text-2xl" style={{ color:'#FFB5D8' }}>Hundesalon Beautiful Dog</h3>
             </div>
             <p className="font-nunito text-gray-500 leading-relaxed mb-6 max-w-xs">
-              Pforzheims Premium Hundesalon — professionelle Pflege mit Liebe und Leidenschaft seit über 15 Jahren.
+              <EditableText path="footer.tagline">{content.footer?.tagline || 'Pforzheims Premium Hundesalon — professionelle Pflege mit Liebe und Leidenschaft seit über 15 Jahren.'}</EditableText>
             </p>
           </motion.div>
 

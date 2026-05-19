@@ -4,14 +4,85 @@
     "titleHighlight": "Beautiful Dog",
     "subtitle": "Ihr Liebling als Beauty-Lounge und Wohlfühl-Oase — professionelle Pflege mit Herz, die Ihren Hund nicht nur schön, sondern auch gesund hält.",
     "phone": "07231 - 37 42 100",
+    "badge": "Premium Hundesalon · Pforzheim",
+    "ctaBook": "Termin buchen →",
     "image": null
   },
+  "features": {
+    "label": "Warum wir?",
+    "title": "Das macht uns besonders",
+    "subtitle": "Weil Ihr Hund mehr als nur eine Behandlung verdient — er verdient ein Erlebnis.",
+    "items": [
+      { "icon": "🏆", "title": "Zertifizierte Groomerin", "desc": "Zertifizierte Hundefriseurin mit über 15 Jahren Erfahrung für alle Rassen." },
+      { "icon": "🌿", "title": "Naturprodukte", "desc": "Hypoallergene, tierfreundliche Shampoos und Pflegemittel — sanft zur Haut." },
+      { "icon": "❤️", "title": "Stressfreie Umgebung", "desc": "Ruhige Atmosphäre, klimatisierte Räume — Ihr Hund fühlt sich bei uns wohl." },
+      { "icon": "✂️", "title": "Kleine & Mittlere Rassen", "desc": "Spezialisiert auf Malteser, Havaneser, Maltipoo und ähnliche Rassen." },
+      { "icon": "📅", "title": "Einfache Buchung", "desc": "Online buchen, Bestätigung per SMS — kein Warten, kein Stress." },
+      { "icon": "📍", "title": "Zentral in Pforzheim", "desc": "Richard-Wagner-Allee 15, 75179 Pforzheim — gut erreichbar." }
+    ]
+  },
   "about": {
+    "label": "Über uns",
     "title": "Mit Herz &",
     "titleHighlight": "Leidenschaft",
     "text1": "Willkommen im Hundesalon Beautiful Dog — Ihrer Beauty-Lounge und Wohlfühl-Oase für Vierbeiner in Pforzheim. Inhaberin Sabine Hornisch, zertifizierte Groomerin aus Leidenschaft, pflegt seit über 15 Jahren Hunde aller Rassen mit Expertise und echter Zuneigung.",
     "text2": "Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.",
+    "badge": "Seit über 15 Jahren",
+    "badgeSub": "Mit Liebe dabei",
     "image": "/images/img-about-image.png"
+  },
+  "services": {
+    "label": "Leistungen",
+    "title": "Alles für Ihren Liebling",
+    "subtitle": "Professionelle Pflege mit Herz — spezialisiert auf kleine und mittelgroße Rassen",
+    "items": [
+      { "icon": "🚿", "title": "Baden & Föhnen", "desc": "Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten" },
+      { "icon": "✂️", "title": "Handschnitt & Styling", "desc": "Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen" },
+      { "icon": "🐩", "title": "Abscheren & Trimmen", "desc": "Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise" },
+      { "icon": "🪮", "title": "Unterwolle entfernen", "desc": "Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell" },
+      { "icon": "💅", "title": "Krallen & Ballenpflege", "desc": "Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell" },
+      { "icon": "👂", "title": "Ohrenreinigung", "desc": "Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners" },
+      { "icon": "🐾", "title": "Bürsten & Kämmen", "desc": "Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild" },
+      { "icon": "🐶", "title": "Welpen Erstschnitt", "desc": "Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start" },
+      { "icon": "🔍", "title": "Beratung & Fellanalyse", "desc": "Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes" }
+    ]
+  },
+  "beforeAfter": {
+    "label": "Transformationen",
+    "title": "Vorher / Nachher 🪄",
+    "subtitle": "Ziehen Sie den Schieberegler und sehen Sie die zauberhafte Verwandlung",
+    "pairs": [
+      { "before": null, "after": null, "name": "Max", "breed": "Golden Retriever" },
+      { "before": null, "after": null, "name": "Luna", "breed": "Pudel" },
+      { "before": null, "after": null, "name": "Bello", "breed": "Labrador" }
+    ]
+  },
+  "reviews": {
+    "label": "Bewertungen",
+    "title": "Was Kunden sagen",
+    "rating": "4.9",
+    "ratingCount": "387 Google Bewertungen",
+    "items": [
+      { "stars": 5, "text": "Mein Bello sieht aus wie ein Filmstar! Super freundlich und sehr professionell. Kommen immer wieder!", "author": "Bello's Mama", "dog": "Bello 🐕", "avatar": "👩‍🦰" },
+      { "stars": 5, "text": "Max war noch nie so schön! Er war total entspannt. Das Team ist einfach fantastisch — absolute Empfehlung!", "author": "Luna's Papa", "dog": "Max 🐩", "avatar": "👨‍🦱" },
+      { "stars": 5, "text": "Super freundliches Team und tolle Atmosphäre! Mia fühlt sich hier immer wohl. Wir kommen jeden Monat!", "author": "Mia's Besitzerin", "dog": "Mia 🦮", "avatar": "👩‍🦳" },
+      { "stars": 5, "text": "Rocky sieht nach jedem Besuch traumhaft aus. Schnell, professionell, liebevoll. Immer wieder gerne!", "author": "Rocky's Mama", "dog": "Rocky 🐕", "avatar": "👩" },
+      { "stars": 5, "text": "Beste Hundefriseurin Pforzheims! Coco liebt es hierher zu kommen. Toller Service!", "author": "Coco's Papa", "dog": "Coco 🐶", "avatar": "👨‍🦳" },
+      { "stars": 5, "text": "Leo war beim ersten Besuch nervös — nach 10 Minuten war er total entspannt. Einfach toll!", "author": "Leo's Familie", "dog": "Leo 🐾", "avatar": "👨‍👩‍👦" }
+    ]
+  },
+  "instagram": {
+    "label": "Instagram",
+    "handle": "@hundesalon.beautifuldog",
+    "url": "https://instagram.com",
+    "photos": [
+      { "url": null, "likes": 234 },
+      { "url": null, "likes": 189 },
+      { "url": null, "likes": 312 },
+      { "url": null, "likes": 156 },
+      { "url": null, "likes": 278 },
+      { "url": null, "likes": 341 }
+    ]
   },
   "contact": {
     "address": "Richard-Wagner-Allee 15, 75179 Pforzheim",
@@ -31,51 +102,11 @@
       "isOpen": true
     }
   ],
-  "services": [
-    {
-      "icon": "🚿",
-      "title": "Baden & Föhnen",
-      "desc": "Sanftes Baden inkl. medizinischer Bäder, professionelles Föhnen mit hochwertigen Produkten"
-    },
-    {
-      "icon": "✂️",
-      "title": "Handschnitt & Styling",
-      "desc": "Rassengerechte Handschnitte und Styling nach FCI-Standard oder Ihren persönlichen Wünschen"
-    },
-    {
-      "icon": "🐩",
-      "title": "Abscheren & Trimmen",
-      "desc": "Professionelles Abscheren und Trimmen für alle Rassen — sauber und präzise"
-    },
-    {
-      "icon": "🪮",
-      "title": "Unterwolle entfernen",
-      "desc": "Carding — schonendes Entfernen der Unterwolle für ein gepflegtes, gesundes Fell"
-    },
-    {
-      "icon": "💅",
-      "title": "Krallen & Ballenpflege",
-      "desc": "Krallen kürzen (inkl. Wolfskrallen) und Ballenpflege — sanft und professionell"
-    },
-    {
-      "icon": "👂",
-      "title": "Ohrenreinigung",
-      "desc": "Sanfte Ohrenreinigung für mehr Wohlbefinden und Gesundheit Ihres Vierbeiners"
-    },
-    {
-      "icon": "🐾",
-      "title": "Bürsten & Kämmen",
-      "desc": "Professionelles Bürsten, Kämmen und Frisieren — für ein gepflegtes Erscheinungsbild"
-    },
-    {
-      "icon": "🐶",
-      "title": "Welpen Erstschnitt",
-      "desc": "Behutsamer erster Friseurbesuch mit eingehender Beratung — für einen entspannten Start"
-    },
-    {
-      "icon": "🔍",
-      "title": "Beratung & Fellanalyse",
-      "desc": "Individuelle Beratung und Fellanalyse — für die optimale Pflege Ihres Hundes"
-    }
-  ]
+  "navbar": {
+    "logo": "Beautiful Dog"
+  },
+  "footer": {
+    "tagline": "Pforzheims Premium Hundesalon — professionelle Pflege mit Liebe und Leidenschaft seit über 15 Jahren.",
+    "copyright": "© 2025 Hundesalon Beautiful Dog. Alle Rechte vorbehalten."
+  }
 }
