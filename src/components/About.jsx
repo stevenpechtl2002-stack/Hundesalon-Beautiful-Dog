@@ -4,12 +4,6 @@ import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
 import EditableImage from './admin/EditableImage'
 
-const stats = [
-  { value: 500, suffix: '+', label: 'Glückliche Hunde', icon: '🐶' },
-  { value: 15,  suffix: ' J.', label: 'Erfahrung', icon: '🏆' },
-  { value: 4.9, suffix: '★', label: 'Bewertung', icon: '⭐' },
-]
-
 function CountUp({ target, suffix, run }) {
   const [val, setVal] = useState(0)
   const isFloat = !Number.isInteger(target)
@@ -33,13 +27,19 @@ export default function About() {
   const [run, setRun] = useState(false)
 
   useEffect(() => {
+    if (!sectionRef.current) return
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setRun(true) }, { threshold: 0.3 })
-    if (sectionRef.current) obs.observe(sectionRef.current)
+    obs.observe(sectionRef.current)
     return () => obs.disconnect()
-  }, [])
+  }, [content])
 
   if (!content) return null
   const { about } = content
+  const stats = about.stats || [
+    { value: 500, suffix: '+', label: 'Glückliche Hunde', icon: '🐶' },
+    { value: 15,  suffix: ' J.', label: 'Erfahrung', icon: '🏆' },
+    { value: 4.9, suffix: '★', label: 'Bewertung', icon: '⭐' },
+  ]
 
   return (
     <section ref={sectionRef} id="ueber-uns" className="py-24" style={{ background: 'white' }}>

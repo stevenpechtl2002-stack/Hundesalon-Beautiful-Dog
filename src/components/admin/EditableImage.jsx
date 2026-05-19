@@ -20,10 +20,10 @@ export default function EditableImage({ path, src, alt, className, style, fallba
   }
 
   return (
-    <div style={{ position: 'relative', cursor: 'pointer' }} onClick={() => inputRef.current.click()}>
+    <div className={className} style={{ ...style, position: 'relative', cursor: 'pointer' }} onClick={() => inputRef.current.click()}>
       {src
-        ? <img src={src} alt={alt} className={className} style={style} />
-        : <div className={className} style={{ ...style, background: 'rgba(255,181,216,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 8 }}>
+        ? <img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        : <div style={{ width: '100%', height: '100%', background: 'rgba(255,181,216,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 8 }}>
             {fallback}
           </div>
       }

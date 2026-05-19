@@ -29,7 +29,12 @@
     "text2": "Professionelle Pflege geht weit über Ästhetik hinaus: Regelmäßige Fell- und Körperpflege schützt Ihren Hund vor Kälte, Hitze, Nässe und Schädlingen — und hilft, Erkrankungen frühzeitig zu erkennen. Auch ängstliche, alte oder unruhige Hunde sind bei uns in besten Händen.",
     "badge": "Seit über 15 Jahren",
     "badgeSub": "Mit Liebe dabei",
-    "image": "/images/img-about-image.png"
+    "image": "/images/img-about-image.png",
+    "stats": [
+      { "value": 500, "suffix": "+", "label": "Glückliche Hunde", "icon": "🐶" },
+      { "value": 15,  "suffix": " J.", "label": "Erfahrung", "icon": "🏆" },
+      { "value": 4.9, "suffix": "★", "label": "Bewertung", "icon": "⭐" }
+    ]
   },
   "services": {
     "label": "Leistungen",
