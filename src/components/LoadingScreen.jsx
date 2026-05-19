@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 // Real paw print SVG path
-function PawPrint({ size = 120, color = '#c8beb4' }) {
+function PawPrint({ size = 120, color = 'var(--site-badge-bg, #c8beb4)' }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100">
       {/* Toe pads — spread wide in an arc */}
@@ -52,13 +52,13 @@ export default function LoadingScreen({ onComplete }) {
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
           className="fixed inset-0 z-[9998] flex flex-col items-center justify-center"
-          style={{ background: '#FAFAFA' }}
+          style={{ background: 'var(--site-bg, #FAFAFA)' }}
         >
-          <PawPrint size={120} color="#c8beb4" />
+          <PawPrint size={120} color="var(--site-badge-bg, #c8beb4)" />
 
           <motion.h1
             className="font-pacifico text-4xl mt-6"
-            style={{ color: '#c8beb4' }}
+            style={{ color: 'var(--site-badge-bg, #c8beb4)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}

@@ -14,6 +14,15 @@ export function AdminProvider({ children }) {
       .then(setContent)
   }, [])
 
+  useEffect(() => {
+    if (!content?.colors) return
+    const r = document.documentElement
+    r.style.setProperty('--site-btn', content.colors.primary || '#1e1a16')
+    r.style.setProperty('--site-badge-bg', content.colors.accent || '#f0ede8')
+    r.style.setProperty('--site-card-bg', content.colors.accent || '#f5f3f0')
+    r.style.setProperty('--site-bg', content.colors.bg || '#FAFAFA')
+  }, [content?.colors])
+
   function login(password) {
     if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
       setIsAdmin(true)

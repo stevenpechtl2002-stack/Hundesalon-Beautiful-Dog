@@ -251,6 +251,11 @@
       "isOpen": true
     }
   ],
+  "colors": {
+    "primary": "#1e1a16",
+    "accent": "#f0ede8",
+    "bg": "#FAFAFA"
+  },
   "navbar": {
     "logo": "Beautiful Dog"
   },

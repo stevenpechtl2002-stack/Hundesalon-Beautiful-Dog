@@ -34,7 +34,7 @@ function StatItem({ target, suffix, label, decimals = 0, duration = 1600 }) {
   const { count, ref } = useCountUp(target, duration, decimals)
   return (
     <div ref={ref}>
-      <p className="font-pacifico text-2xl" style={{ color: '#1e1a16' }}>
+      <p className="font-pacifico text-2xl" style={{ color: 'var(--site-btn, #1e1a16)' }}>
         {decimals > 0 ? count.toFixed(decimals) : Math.floor(count)}{suffix}
       </p>
       <p className="font-nunito text-xs mt-0.5" style={{ color: '#9e9490' }}>{label}</p>
@@ -81,9 +81,9 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-2 md:px-4 py-24 w-full">
         <div className="max-w-md">
           <motion.div {...stagger(0.1)} className="mb-6">
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full" style={{ background: '#f5f3f0', border: '1px solid #e8e2db' }}>
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full" style={{ background: 'var(--site-card-bg, #f5f3f0)', border: '1px solid #e8e2db' }}>
               <span className="text-sm">🐾</span>
-              <span className="font-nunito font-700 text-xs tracking-[0.25em] uppercase" style={{ color: '#7a6e65' }}>Premium Hundesalon · Pforzheim</span>
+              <span className="font-nunito font-700 text-xs tracking-[0.25em] uppercase" style={{ color: 'var(--site-badge-text, #7a6e65)' }}>Premium Hundesalon · Pforzheim</span>
             </div>
           </motion.div>
 
@@ -101,7 +101,7 @@ export default function Hero() {
 
           <motion.div {...stagger(0.52)} className="flex flex-wrap gap-2 mb-8">
             {['Zertifizierte Groomerin', 'Naturprodukte', 'Kleine & Mittlere Rassen'].map(chip => (
-              <span key={chip} className="font-nunito font-600 text-xs px-3.5 py-1.5 rounded-full" style={{ background: '#f5f3f0', border: '1px solid #e5e0d8', color: '#6b6055' }}>{chip}</span>
+              <span key={chip} className="font-nunito font-600 text-xs px-3.5 py-1.5 rounded-full" style={{ background: 'var(--site-card-bg, #f5f3f0)', border: '1px solid #e5e0d8', color: '#6b6055' }}>{chip}</span>
             ))}
           </motion.div>
 
@@ -120,7 +120,7 @@ export default function Hero() {
 
           <motion.div {...stagger(0.75)} className="flex flex-wrap gap-3">
             <motion.a href="#buchen" className="font-nunito font-800 text-sm px-8 py-4 rounded-2xl text-white"
-              style={{ background: '#1e1a16', boxShadow: '0 8px 28px rgba(0,0,0,0.22)' }}
+              style={{ background: 'var(--site-btn, #1e1a16)', boxShadow: '0 8px 28px rgba(0,0,0,0.22)' }}
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>Termin buchen →</motion.a>
             <motion.a href={`tel:${hero.phone?.replace(/\s|-/g,'')}`}
               className="font-nunito font-700 text-sm px-7 py-4 rounded-2xl flex items-center gap-2"

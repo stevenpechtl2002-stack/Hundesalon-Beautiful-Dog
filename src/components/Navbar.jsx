@@ -68,7 +68,7 @@ export default function Navbar() {
         <motion.a
           href="#buchen"
           className="font-nunito font-700 text-sm px-5 py-2.5 rounded-full text-white glow-btn pulse-glow"
-          style={{ background: '#1e1a16' }}
+          style={{ background: 'var(--site-btn, #1e1a16)' }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -118,7 +118,7 @@ export default function Navbar() {
             <a
               href="#buchen"
               className="font-nunito font-700 text-center py-3 rounded-full text-white"
-              style={{ background: '#1e1a16' }}
+              style={{ background: 'var(--site-btn, #1e1a16)' }}
               onClick={() => setOpen(false)}
             >
               Termin buchen 🐾

@@ -81,10 +81,10 @@ export default function BeforeAfter() {
   const { beforeAfter } = content
 
   return (
-    <section className="py-24" style={{ background: '#FAFAFA' }}>
+    <section className="py-24" style={{ background: 'var(--site-bg, #FAFAFA)' }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block font-nunito text-sm font-700 tracking-widest uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: '#f0ede8', color: '#7a6e65' }}>
+          <span className="inline-block font-nunito text-sm font-700 tracking-widest uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: 'var(--site-badge-bg, #f0ede8)', color: 'var(--site-badge-text, #7a6e65)' }}>
             <EditableText path="beforeAfter.label">{beforeAfter.label}</EditableText>
           </span>
           <h2 className="font-pacifico text-4xl md:text-5xl text-gray-800 mt-2">

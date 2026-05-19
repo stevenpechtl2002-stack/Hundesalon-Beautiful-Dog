@@ -12,7 +12,7 @@ export default function Location() {
       <div className="max-w-7xl mx-auto px-8 md:px-16">
         <motion.div className="text-center mb-14"
           initial={{ opacity:0, y:30 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}>
-          <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background:'#f0ede8', color:'#7a6e65' }}>Unser Salon</span>
+          <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background:'var(--site-badge-bg, #f0ede8)', color:'var(--site-badge-text, #7a6e65)' }}>Unser Salon</span>
           <h2 className="font-pacifico text-3xl md:text-4xl text-gray-900 mt-2">Besuchen Sie uns in Pforzheim 📍</h2>
         </motion.div>
 
@@ -27,7 +27,7 @@ export default function Location() {
           <motion.div initial={{ opacity:0, x:30 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:0.7 }}>
             <div className="glass rounded-3xl p-8 flex flex-col gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0" style={{ background:'#f5f3f0' }}>🐾</div>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0" style={{ background:'var(--site-card-bg, #f5f3f0)' }}>🐾</div>
                 <div>
                   <h3 className="font-pacifico text-xl text-gray-900">Hundesalon Beautiful Dog</h3>
                   <p className="font-nunito text-gray-400 text-sm">Pforzheim</p>
@@ -77,7 +77,7 @@ export default function Location() {
               <motion.a href="https://www.google.com/maps/search/Richard-Wagner-Allee+15,+75179+Pforzheim"
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 rounded-xl font-nunito font-700 text-sm"
-                style={{ background:'#f5f3f0', border:'1px solid #e8e2db', color:'#5a4a3a' }}
+                style={{ background:'var(--site-card-bg, #f5f3f0)', border:'1px solid #e8e2db', color:'#5a4a3a' }}
                 whileHover={{ scale:1.02 }}>
                 📍 In Google Maps öffnen
               </motion.a>
