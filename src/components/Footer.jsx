@@ -96,7 +96,7 @@ export default function Footer() {
               <a key={l} href="#" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">{l}</a>
             ))}
             <a
-              href={`${window.location.protocol}//${window.location.hostname}:3333`}
+              href="https://beautiful-dog.sanity.studio"
               target="_blank"
               rel="noopener noreferrer"
               className="font-nunito text-xs px-3 py-1.5 rounded-lg transition-all"
