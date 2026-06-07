@@ -77,8 +77,8 @@ export default function Reviews() {
           }}
         >
           <TestimonialsColumn testimonials={col1} duration={18} />
-          <TestimonialsColumn testimonials={col2} duration={22} className="hidden md:block" />
-          <TestimonialsColumn testimonials={col3} duration={20} className="hidden lg:block" />
+          <TestimonialsColumn testimonials={col2} duration={22} />
+          <TestimonialsColumn testimonials={col3} duration={20} />
         </div>
       </div>
     </section>
