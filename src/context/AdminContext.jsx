@@ -23,8 +23,8 @@ export function AdminProvider({ children }) {
     r.style.setProperty('--site-bg', content.colors.bg || '#FAFAFA')
   }, [content?.colors])
 
-  function login(password) {
-    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
+  function login(pin) {
+    if (pin === '6008') {
       setIsAdmin(true)
       return true
     }

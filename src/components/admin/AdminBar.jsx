@@ -89,13 +89,51 @@ export default function AdminBar() {
   const { isAdmin, login, logout, saveContent, saving, saveMsg } = useAdmin()
   const [showLogin, setShowLogin] = useState(false)
   const [showColors, setShowColors] = useState(false)
-  const [pw, setPw] = useState('')
-  const [error, setError] = useState('')
+  const [digits, setDigits] = useState(['', '', '', ''])
+  const [error, setError] = useState(false)
+  const inputRefs = [useState(null)[0], useState(null)[0], useState(null)[0], useState(null)[0]]
+  const refs = [
+    el => (inputRefs[0] = el),
+    el => (inputRefs[1] = el),
+    el => (inputRefs[2] = el),
+    el => (inputRefs[3] = el),
+  ]
 
-  function handleLogin(e) {
-    e.preventDefault()
-    if (login(pw)) { setShowLogin(false); setPw(''); setError('') }
-    else setError('Falsches Passwort')
+  function handleDigit(i, val) {
+    const v = val.replace(/\D/g, '').slice(-1)
+    const next = [...digits]
+    next[i] = v
+    setDigits(next)
+    setError(false)
+    if (v && i < 3) inputRefs[i + 1]?.focus()
+    if (next.every(d => d !== '') && next.join('').length === 4) {
+      const pin = next.join('')
+      if (!login(pin)) {
+        setError(true)
+        setDigits(['', '', '', ''])
+        setTimeout(() => inputRefs[0]?.focus(), 50)
+      } else {
+        setShowLogin(false)
+        setDigits(['', '', '', ''])
+        setError(false)
+      }
+    }
+  }
+
+  function handleKeyDown(i, e) {
+    if (e.key === 'Backspace' && !digits[i] && i > 0) {
+      inputRefs[i - 1]?.focus()
+      const next = [...digits]
+      next[i - 1] = ''
+      setDigits(next)
+    }
+  }
+
+  function openLogin() {
+    setDigits(['', '', '', ''])
+    setError(false)
+    setShowLogin(true)
+    setTimeout(() => inputRefs[0]?.focus(), 80)
   }
 
   if (isAdmin) return (
@@ -128,15 +166,15 @@ export default function AdminBar() {
           }}>Abmelden</button>
         </div>
       </div>
-
       {showColors && <ColorPanel onClose={() => setShowColors(false)} />}
     </>
   )
 
   return (
     <>
+      {/* Floating login button */}
       <button
-        onClick={() => setShowLogin(true)}
+        onClick={openLogin}
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
           background: 'var(--site-btn, #1e1a16)',
@@ -145,41 +183,78 @@ export default function AdminBar() {
           boxShadow: '0 4px 20px rgba(0,0,0,0.25)'
         }}
         title="Admin Login"
-      >🐾</button>
+      >🏠</button>
 
+      {/* PIN Modal */}
       {showLogin && (
-        <div style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)',
-          zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }} onClick={() => setShowLogin(false)}>
-          <form onSubmit={handleLogin} onClick={e => e.stopPropagation()} style={{
-            background: 'white', borderRadius: 24, padding: 40, width: 320,
-            boxShadow: '0 20px 60px rgba(0,0,0,0.2)', fontFamily: 'sans-serif'
-          }}>
-            <div style={{ textAlign: 'center', marginBottom: 24 }}>
-              <div style={{ fontSize: 40, marginBottom: 8 }}>🐾</div>
-              <h2 style={{ margin: 0, color: '#1a1025', fontSize: 20, fontWeight: 700 }}>Admin Login</h2>
-              <p style={{ color: 'var(--site-badge-text, #7a6e65)', fontSize: 13, marginTop: 4 }}>Hundesalon Beautiful Dog</p>
+        <div
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(10,14,20,0.65)',
+            backdropFilter: 'blur(8px)', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+          onClick={() => setShowLogin(false)}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: 'white', borderRadius: 28, padding: '44px 40px 36px',
+              width: 340, boxShadow: '0 32px 80px rgba(0,0,0,0.22)',
+              fontFamily: 'Nunito, sans-serif', textAlign: 'center'
+            }}
+          >
+            {/* Icon */}
+            <div style={{
+              width: 64, height: 64, borderRadius: 20, margin: '0 auto 20px',
+              background: 'var(--site-btn, #1e1a16)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 28
+            }}>🏠</div>
+
+            <h2 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 800, color: '#1a1a1a' }}>
+              Admin-Bereich
+            </h2>
+            <p style={{ margin: '0 0 28px', fontSize: 13, color: '#999' }}>
+              NordzypernImmo · PIN eingeben
+            </p>
+
+            {/* 4-digit PIN boxes */}
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
+              {digits.map((d, i) => (
+                <input
+                  key={i}
+                  ref={refs[i]}
+                  type="password"
+                  inputMode="numeric"
+                  maxLength={1}
+                  value={d}
+                  onChange={e => handleDigit(i, e.target.value)}
+                  onKeyDown={e => handleKeyDown(i, e)}
+                  style={{
+                    width: 56, height: 64, textAlign: 'center',
+                    fontSize: 28, fontWeight: 800,
+                    border: `2px solid ${error ? '#ef4444' : d ? 'var(--site-btn, #1e1a16)' : '#e5e7eb'}`,
+                    borderRadius: 14, outline: 'none',
+                    background: error ? '#fff5f5' : d ? '#f8f7f5' : 'white',
+                    color: '#1a1a1a',
+                    transition: 'border-color 0.2s, background 0.2s',
+                    caretColor: 'transparent',
+                  }}
+                />
+              ))}
             </div>
-            <input
-              type="password"
-              value={pw}
-              onChange={e => setPw(e.target.value)}
-              placeholder="Passwort"
-              autoFocus
-              style={{
-                width: '100%', padding: '12px 16px', borderRadius: 12, fontSize: 15,
-                border: '2px solid #ece8f5', outline: 'none', boxSizing: 'border-box',
-                marginBottom: 8
-              }}
-            />
-            {error && <p style={{ color: 'var(--site-btn, #1e1a16)', fontSize: 13, margin: '4px 0 8px' }}>{error}</p>}
-            <button type="submit" style={{
-              width: '100%', padding: '12px', borderRadius: 12, fontSize: 15,
-              fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: 8,
-              background: 'var(--site-btn, #1e1a16)', color: 'white'
-            }}>Einloggen</button>
-          </form>
+
+            {/* Error */}
+            {error && (
+              <p style={{ color: '#ef4444', fontSize: 13, fontWeight: 600, margin: '0 0 12px' }}>
+                ❌ Falscher PIN — bitte erneut versuchen
+              </p>
+            )}
+
+            <p style={{ margin: 0, fontSize: 12, color: '#ccc' }}>
+              4-stelligen PIN eingeben — bestätigt automatisch
+            </p>
+          </div>
         </div>
       )}
     </>
