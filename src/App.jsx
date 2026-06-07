@@ -26,10 +26,10 @@ function HomePage({ loaded, setLoaded }) {
       </AnimatePresence>
       <main>
         <Hero />
+        <PropertyMarquee />
         <Features />
         <Services />
         <About />
-        <PropertyMarquee />
         <InteractiveSelector />
         <Reviews />
         <Booking />
