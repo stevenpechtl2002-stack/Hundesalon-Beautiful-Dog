@@ -68,8 +68,10 @@ export default function Reviews() {
 
         {/* Columns */}
         <div
-          className="flex justify-center gap-6 mt-4"
           style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 24,
             maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
             WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
             maxHeight: 720,
