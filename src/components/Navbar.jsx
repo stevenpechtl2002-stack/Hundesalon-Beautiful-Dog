@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
 
-const links = [
-  { label: 'Objekte', href: '#leistungen' },
+const ANCHOR_LINKS = [
   { label: 'Warum Nordzypern', href: '#ueber-uns' },
   { label: 'Leistungen', href: '#leistungen' },
   { label: 'Bewertungen', href: '#bewertungen' },
@@ -15,6 +15,9 @@ export default function Navbar() {
   const { content } = useAdmin()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isProperties = location.pathname === '/immobilien'
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60)
@@ -22,50 +25,82 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  const linkColor = (scrolled || isProperties) ? '#555' : 'rgba(255,255,255,0.9)'
+  const logoColor = (scrolled || isProperties) ? '#333' : 'white'
+  const navBg = isProperties
+    ? 'rgba(250,250,250,0.97)'
+    : scrolled ? 'rgba(250,250,250,0.95)' : 'transparent'
+
+  const handleAnchor = (href) => {
+    if (isProperties) {
+      navigate('/')
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+      }, 300)
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    }
+    setOpen(false)
+  }
+
   return (
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12"
       style={{ height: 72 }}
       animate={{
-        background: scrolled ? 'rgba(250,250,250,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'blur(0px)',
-        boxShadow: scrolled ? '0 2px 30px rgba(255,181,216,0.2)' : 'none',
+        background: navBg,
+        backdropFilter: (scrolled || isProperties) ? 'blur(20px)' : 'blur(0px)',
+        boxShadow: (scrolled || isProperties) ? '0 2px 20px rgba(0,0,0,0.06)' : 'none',
       }}
       transition={{ duration: 0.4 }}
     >
       {/* Logo */}
-      <a href="#" className="flex items-center gap-2 group">
+      <Link to="/" className="flex items-center gap-2 group">
         <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }} className="text-2xl">
           🏠
         </motion.div>
-        <span className="font-pacifico text-xl" style={{ color: scrolled ? '#333' : 'white' }}>
-          <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'Beautiful Dog'}</EditableText>
+        <span className="font-pacifico text-xl" style={{ color: logoColor }}>
+          <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'NordzypernImmo'}</EditableText>
         </span>
-      </a>
+      </Link>
 
       {/* Desktop links */}
-      <div className="hidden md:flex items-center gap-8">
-        {links.map((l) => (
-          <motion.a
+      <div className="hidden md:flex items-center gap-6">
+        {/* Immobilien page link */}
+        <Link
+          to="/immobilien"
+          className="font-nunito font-700 text-sm tracking-wide relative group"
+          style={{ color: isProperties ? 'var(--site-btn, #1e1a16)' : linkColor }}
+        >
+          Immobilien
+          {isProperties && (
+            <span className="absolute -bottom-1 left-0 w-full h-0.5 rounded-full" style={{ background: 'var(--site-btn, #1e1a16)' }} />
+          )}
+        </Link>
+
+        {ANCHOR_LINKS.map((l) => (
+          <motion.button
             key={l.href}
-            href={l.href}
-            className="font-nunito font-600 text-sm tracking-wide relative group"
-            style={{ color: scrolled ? '#555' : 'rgba(255,255,255,0.9)' }}
+            onClick={() => handleAnchor(l.href)}
+            className="font-nunito font-600 text-sm tracking-wide relative group bg-transparent border-0 cursor-pointer"
+            style={{ color: linkColor }}
             whileHover={{ y: -1 }}
           >
             {l.label}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-rosa group-hover:w-full transition-all duration-300 rounded-full" />
-          </motion.a>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 rounded-full"
+              style={{ background: 'var(--site-btn, #1e1a16)' }} />
+          </motion.button>
         ))}
-        <motion.a
-          href="#buchen"
-          className="font-nunito font-700 text-sm px-5 py-2.5 rounded-full text-white glow-btn pulse-glow"
+
+        <motion.button
+          onClick={() => handleAnchor('#buchen')}
+          className="font-nunito font-700 text-sm px-5 py-2.5 rounded-full text-white cursor-pointer border-0"
           style={{ background: 'var(--site-btn, #1e1a16)' }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           Kostenlos beraten 🏠
-        </motion.a>
+        </motion.button>
       </div>
 
       {/* Mobile hamburger */}
@@ -78,7 +113,7 @@ export default function Navbar() {
           <motion.span
             key={i}
             className="block h-0.5 w-6 rounded-full"
-            style={{ background: scrolled ? '#333' : 'white' }}
+            style={{ background: (scrolled || isProperties) ? '#333' : 'white' }}
             animate={{
               rotate: open && i === 0 ? 45 : open && i === 2 ? -45 : 0,
               y: open && i === 0 ? 8 : open && i === 2 ? -8 : 0,
@@ -97,24 +132,25 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
           >
-            {links.map((l) => (
-              <a
+            <Link to="/immobilien" className="font-nunito font-700 text-gray-900 text-lg" onClick={() => setOpen(false)}>
+              🏠 Immobilien
+            </Link>
+            {ANCHOR_LINKS.map((l) => (
+              <button
                 key={l.href}
-                href={l.href}
-                className="font-nunito font-600 text-gray-700 text-lg"
-                onClick={() => setOpen(false)}
+                onClick={() => handleAnchor(l.href)}
+                className="font-nunito font-600 text-gray-700 text-lg text-left bg-transparent border-0 cursor-pointer"
               >
                 {l.label}
-              </a>
+              </button>
             ))}
-            <a
-              href="#buchen"
-              className="font-nunito font-700 text-center py-3 rounded-full text-white"
+            <button
+              onClick={() => handleAnchor('#buchen')}
+              className="font-nunito font-700 text-center py-3 rounded-full text-white border-0 cursor-pointer"
               style={{ background: 'var(--site-btn, #1e1a16)' }}
-              onClick={() => setOpen(false)}
             >
               Kostenlos beraten 🏠
-            </a>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

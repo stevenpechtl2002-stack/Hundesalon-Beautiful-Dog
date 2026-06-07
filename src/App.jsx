@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { AdminProvider } from './context/AdminContext'
 import AdminBar from './components/admin/AdminBar'
@@ -14,31 +15,45 @@ import Location from './components/Location'
 import Booking from './components/Booking'
 import Instagram from './components/Instagram'
 import Footer from './components/Footer'
+import PropertiesPage from './pages/PropertiesPage'
+
+function HomePage({ loaded, setLoaded }) {
+  return (
+    <>
+      <AnimatePresence>
+        {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
+      </AnimatePresence>
+      <main>
+        <Hero />
+        <Features />
+        <Services />
+        <About />
+        <InteractiveSelector />
+        <Reviews />
+        <Booking />
+        <Location />
+        <Instagram />
+      </main>
+      <Footer />
+    </>
+  )
+}
 
 export default function App() {
   const [loaded, setLoaded] = useState(false)
 
   return (
-    <AdminProvider>
-      <AnimatePresence>
-        {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
-      </AnimatePresence>
-      <div className="font-nunito" style={{ paddingTop: 0 }}>
-        <AdminBar />
-        <Navbar />
-        <main>
-          <Hero />
-          <Features />
-          <Services />
-          <About />
-          <InteractiveSelector />
-          <Reviews />
-          <Booking />
-          <Location />
-          <Instagram />
-        </main>
-        <Footer />
-      </div>
-    </AdminProvider>
+    <BrowserRouter>
+      <AdminProvider>
+        <div className="font-nunito">
+          <AdminBar />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage loaded={loaded} setLoaded={setLoaded} />} />
+            <Route path="/immobilien" element={<PropertiesPage />} />
+          </Routes>
+        </div>
+      </AdminProvider>
+    </BrowserRouter>
   )
 }
