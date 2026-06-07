@@ -1,24 +1,21 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAdmin } from '../../context/AdminContext'
-import AdminPropertiesPanel from './AdminPropertiesPanel'
 
 const COLOR_PRESETS = [
-  { label: 'Schwarz', primary: '#1e1a16', accent: '#f0ede8', bg: '#FAFAFA' },
-  { label: 'Rosa',    primary: '#c0607a', accent: '#fff0f4', bg: '#FAFAFA' },
-  { label: 'Grün',   primary: '#2d6a4f', accent: '#eaf4ef', bg: '#FAFAFA' },
-  { label: 'Blau',   primary: '#1a4a8a', accent: '#eef3fb', bg: '#FAFAFA' },
-  { label: 'Lila',   primary: '#6b4fa0', accent: '#f3f0fb', bg: '#FAFAFA' },
-  { label: 'Terrakotta', primary: '#8b4a2a', accent: '#fdf0ea', bg: '#FAFAFA' },
+  { label: 'Schwarz',    primary: '#1e1a16', accent: '#f0ede8', bg: '#FAFAFA' },
+  { label: 'Rosa',       primary: '#c0607a', accent: '#fff0f4', bg: '#FAFAFA' },
+  { label: 'Grün',      primary: '#2d6a4f', accent: '#eaf4ef', bg: '#FAFAFA' },
+  { label: 'Blau',      primary: '#1a4a8a', accent: '#eef3fb', bg: '#FAFAFA' },
+  { label: 'Lila',      primary: '#6b4fa0', accent: '#f3f0fb', bg: '#FAFAFA' },
+  { label: 'Terrakotta',primary: '#8b4a2a', accent: '#fdf0ea', bg: '#FAFAFA' },
 ]
 
 function ColorPanel({ onClose }) {
   const { content, updateField } = useAdmin()
   const colors = content?.colors || { primary: '#1e1a16', accent: '#f0ede8', bg: '#FAFAFA' }
 
-  function set(key, val) {
-    updateField(`colors.${key}`, val)
-  }
-
+  function set(key, val) { updateField(`colors.${key}`, val) }
   function applyPreset(p) {
     updateField('colors.primary', p.primary)
     updateField('colors.accent', p.accent)
@@ -37,10 +34,9 @@ function ColorPanel({ onClose }) {
         <button onClick={onClose} style={{ background: 'none', border: 'none', fontSize: 18, cursor: 'pointer', color: '#999' }}>✕</button>
       </div>
 
-      {/* Individual color pickers */}
       {[
-        { key: 'primary', label: 'Button-Farbe', hint: 'Buttons & Akzente' },
-        { key: 'accent',  label: 'Highlight-Farbe', hint: 'Badges & Karten' },
+        { key: 'primary', label: 'Button-Farbe',       hint: 'Buttons & Akzente' },
+        { key: 'accent',  label: 'Highlight-Farbe',    hint: 'Badges & Karten' },
         { key: 'bg',      label: 'Seiten-Hintergrund', hint: 'Abschnittshintergrund' },
       ].map(({ key, label, hint }) => (
         <div key={key} style={{ marginBottom: 16 }}>
@@ -50,11 +46,7 @@ function ColorPanel({ onClose }) {
               <p style={{ margin: 0, fontSize: 11, color: '#999' }}>{hint}</p>
             </div>
             <label style={{ position: 'relative', cursor: 'pointer' }}>
-              <div style={{
-                width: 40, height: 40, borderRadius: 10, border: '2px solid #e8e2db',
-                background: colors[key], cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.12)'
-              }} />
+              <div style={{ width: 40, height: 40, borderRadius: 10, border: '2px solid #e8e2db', background: colors[key], cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }} />
               <input type="color" value={colors[key]} onChange={e => set(key, e.target.value)}
                 style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', width: '100%', height: '100%' }} />
             </label>
@@ -62,7 +54,6 @@ function ColorPanel({ onClose }) {
         </div>
       ))}
 
-      {/* Presets */}
       <div style={{ borderTop: '1px solid #eeebe6', paddingTop: 16, marginTop: 4 }}>
         <p style={{ margin: '0 0 10px', fontSize: 12, fontWeight: 700, color: '#999', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Schnell-Auswahl</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -88,12 +79,12 @@ function ColorPanel({ onClose }) {
 
 export default function AdminBar() {
   const { isAdmin, login, logout, saveContent, saving, saveMsg } = useAdmin()
+  const navigate = useNavigate()
   const [showLogin, setShowLogin] = useState(false)
   const [showColors, setShowColors] = useState(false)
-  const [showProperties, setShowProperties] = useState(false)
   const [digits, setDigits] = useState(['', '', '', ''])
   const [error, setError] = useState(false)
-  const inputRefs = [useState(null)[0], useState(null)[0], useState(null)[0], useState(null)[0]]
+  const inputRefs = [null, null, null, null]
   const refs = [
     el => (inputRefs[0] = el),
     el => (inputRefs[1] = el),
@@ -151,23 +142,30 @@ export default function AdminBar() {
           ✏️ Admin-Modus — Texte und Bilder anklicken zum Bearbeiten
         </span>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-          {saveMsg && <span style={{ color: 'white', fontSize: 13 }}>{saveMsg}</span>}
-          <button onClick={() => { setShowProperties(v => !v); setShowColors(false) }} style={{
-            background: showProperties ? 'white' : 'rgba(255,255,255,0.15)',
-            color: showProperties ? 'var(--site-btn, #1e1a16)' : 'white',
+          {saveMsg && <span style={{ fontSize: 13, color: saveMsg.includes('✅') ? '#86efac' : '#fca5a5', fontWeight: 700 }}>{saveMsg}</span>}
+
+          <button
+            onClick={() => { navigate('/admin/inserate'); setShowColors(false) }}
+            style={{
+              background: 'rgba(255,255,255,0.15)', color: 'white',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: 10, padding: '7px 14px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
+            }}
+          >🏠 Inserate</button>
+
+          <button onClick={() => setShowColors(v => !v)} style={{
+            background: 'rgba(255,255,255,0.15)', color: 'white',
             border: '1px solid rgba(255,255,255,0.3)',
             borderRadius: 10, padding: '7px 14px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
-          }}>🏠 Inserate</button>
-          <button onClick={() => { setShowColors(v => !v); setShowProperties(false) }} style={{
-            background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)',
-            borderRadius: 10, padding: '7px 14px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
           }}>🎨 Farben</button>
+
           <button onClick={saveContent} disabled={saving} style={{
-            background: 'white', color: 'var(--site-btn, #1e1a16)', border: 'none', borderRadius: 10,
-            padding: '8px 20px', fontWeight: 700, fontSize: 13, cursor: 'pointer'
+            background: 'white', color: 'var(--site-btn, #1e1a16)', border: 'none',
+            borderRadius: 10, padding: '8px 20px', fontWeight: 700, fontSize: 13, cursor: 'pointer'
           }}>
             {saving ? 'Speichert...' : '💾 Speichern'}
           </button>
+
           <button onClick={logout} style={{
             background: 'rgba(255,255,255,0.2)', color: 'white', border: 'none',
             borderRadius: 10, padding: '8px 16px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
@@ -175,13 +173,11 @@ export default function AdminBar() {
         </div>
       </div>
       {showColors && <ColorPanel onClose={() => setShowColors(false)} />}
-      {showProperties && <AdminPropertiesPanel onClose={() => setShowProperties(false)} />}
     </>
   )
 
   return (
     <>
-      {/* Floating login button */}
       <button
         onClick={openLogin}
         style={{
@@ -194,7 +190,6 @@ export default function AdminBar() {
         title="Admin Login"
       >🏠</button>
 
-      {/* PIN Modal */}
       {showLogin && (
         <div
           style={{
@@ -212,22 +207,15 @@ export default function AdminBar() {
               fontFamily: 'Nunito, sans-serif', textAlign: 'center'
             }}
           >
-            {/* Icon */}
             <div style={{
               width: 64, height: 64, borderRadius: 20, margin: '0 auto 20px',
               background: 'var(--site-btn, #1e1a16)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 28
+              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28
             }}>🏠</div>
 
-            <h2 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 800, color: '#1a1a1a' }}>
-              Admin-Bereich
-            </h2>
-            <p style={{ margin: '0 0 28px', fontSize: 13, color: '#999' }}>
-              NordzypernImmo · PIN eingeben
-            </p>
+            <h2 style={{ margin: '0 0 4px', fontSize: 22, fontWeight: 800, color: '#1a1a1a' }}>Admin-Bereich</h2>
+            <p style={{ margin: '0 0 28px', fontSize: 13, color: '#999' }}>NordzypernImmo · PIN eingeben</p>
 
-            {/* 4-digit PIN boxes */}
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
               {digits.map((d, i) => (
                 <input
@@ -245,15 +233,13 @@ export default function AdminBar() {
                     border: `2px solid ${error ? '#ef4444' : d ? 'var(--site-btn, #1e1a16)' : '#e5e7eb'}`,
                     borderRadius: 14, outline: 'none',
                     background: error ? '#fff5f5' : d ? '#f8f7f5' : 'white',
-                    color: '#1a1a1a',
-                    transition: 'border-color 0.2s, background 0.2s',
+                    color: '#1a1a1a', transition: 'border-color 0.2s, background 0.2s',
                     caretColor: 'transparent',
                   }}
                 />
               ))}
             </div>
 
-            {/* Error */}
             {error && (
               <p style={{ color: '#ef4444', fontSize: 13, fontWeight: 600, margin: '0 0 12px' }}>
                 ❌ Falscher PIN — bitte erneut versuchen

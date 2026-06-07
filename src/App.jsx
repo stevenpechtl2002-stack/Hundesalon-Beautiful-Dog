@@ -18,6 +18,7 @@ import Instagram from './components/Instagram'
 import Footer from './components/Footer'
 import PropertiesPage from './pages/PropertiesPage'
 import PropertyDetailPage from './pages/PropertyDetailPage'
+import AdminInseratePage from './pages/AdminInseratePage'
 
 function HomePage({ loaded, setLoaded }) {
   return (
@@ -55,6 +56,7 @@ export default function App() {
             <Route path="/" element={<HomePage loaded={loaded} setLoaded={setLoaded} />} />
             <Route path="/immobilien" element={<PropertiesPage />} />
             <Route path="/immobilien/:id" element={<PropertyDetailPage />} />
+            <Route path="/admin/inserate" element={<AdminInseratePage />} />
           </Routes>
         </div>
       </AdminProvider>
