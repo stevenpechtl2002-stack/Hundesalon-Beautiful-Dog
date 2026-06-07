@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAdmin } from '../../context/AdminContext'
+import AdminPropertiesPanel from './AdminPropertiesPanel'
 
 const COLOR_PRESETS = [
   { label: 'Schwarz', primary: '#1e1a16', accent: '#f0ede8', bg: '#FAFAFA' },
@@ -89,6 +90,7 @@ export default function AdminBar() {
   const { isAdmin, login, logout, saveContent, saving, saveMsg } = useAdmin()
   const [showLogin, setShowLogin] = useState(false)
   const [showColors, setShowColors] = useState(false)
+  const [showProperties, setShowProperties] = useState(false)
   const [digits, setDigits] = useState(['', '', '', ''])
   const [error, setError] = useState(false)
   const inputRefs = [useState(null)[0], useState(null)[0], useState(null)[0], useState(null)[0]]
@@ -150,7 +152,13 @@ export default function AdminBar() {
         </span>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {saveMsg && <span style={{ color: 'white', fontSize: 13 }}>{saveMsg}</span>}
-          <button onClick={() => setShowColors(v => !v)} style={{
+          <button onClick={() => { setShowProperties(v => !v); setShowColors(false) }} style={{
+            background: showProperties ? 'white' : 'rgba(255,255,255,0.15)',
+            color: showProperties ? 'var(--site-btn, #1e1a16)' : 'white',
+            border: '1px solid rgba(255,255,255,0.3)',
+            borderRadius: 10, padding: '7px 14px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
+          }}>🏠 Inserate</button>
+          <button onClick={() => { setShowColors(v => !v); setShowProperties(false) }} style={{
             background: 'rgba(255,255,255,0.15)', color: 'white', border: '1px solid rgba(255,255,255,0.3)',
             borderRadius: 10, padding: '7px 14px', fontWeight: 600, fontSize: 13, cursor: 'pointer'
           }}>🎨 Farben</button>
@@ -167,6 +175,7 @@ export default function AdminBar() {
         </div>
       </div>
       {showColors && <ColorPanel onClose={() => setShowColors(false)} />}
+      {showProperties && <AdminPropertiesPanel onClose={() => setShowProperties(false)} />}
     </>
   )
 
