@@ -43,9 +43,12 @@ export default function Services() {
                 </EditableText>
               </div>
               <div className="flex items-center justify-end pt-3 border-t border-gray-50">
-                <motion.a href="#buchen" className="font-nunito font-700 text-xs px-4 py-2 rounded-xl text-white"
-                  style={{ background: 'var(--site-btn, #1e1a16)' }} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}>
-                  Termin anfragen
+                <motion.a
+                  href={`https://wa.me/4915251946226?text=${encodeURIComponent(`Hallo, ich interessiere mich für Ihr Angebot „${s.title}" in Nordzypern. Könnten Sie mir weitere Informationen und einen Beratungstermin anbieten?`)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="font-nunito font-700 text-xs px-4 py-2 rounded-xl text-white"
+                  style={{ background: '#22c55e' }} whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}>
+                  💬 Anfragen
                 </motion.a>
               </div>
             </motion.div>
