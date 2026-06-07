@@ -11,6 +11,50 @@ const ANCHOR_LINKS = [
   { label: 'Kontakt', href: '#buchen' },
 ]
 
+function CyprusSvg({ color = 'white' }) {
+  return (
+    <svg width="38" height="28" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Cyprus island silhouette — top-down view */}
+      <path
+        d="
+          M 18 72
+          C 20 65, 28 58, 38 54
+          C 48 50, 52 44, 58 40
+          C 64 36, 72 32, 80 30
+          C 90 28, 100 26, 110 27
+          C 120 28, 128 30, 136 35
+          C 144 40, 150 46, 154 50
+          C 162 48, 170 44, 176 42
+          C 180 40, 183 41, 182 45
+          C 181 49, 176 52, 170 55
+          C 164 58, 158 58, 154 60
+          C 152 66, 148 72, 142 78
+          C 136 84, 128 88, 118 90
+          C 108 92, 96 92, 84 90
+          C 72 88, 60 84, 50 80
+          C 40 76, 28 76, 22 76
+          Z
+        "
+        fill={color}
+        opacity="0.95"
+      />
+      {/* Karpass peninsula (pointy bit top-right) */}
+      <path
+        d="
+          M 154 50
+          C 160 46, 168 42, 176 40
+          C 180 39, 183 40, 182 44
+          C 181 48, 175 52, 168 54
+          C 162 56, 156 57, 154 58
+          Z
+        "
+        fill={color}
+        opacity="0.9"
+      />
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const { content } = useAdmin()
   const [scrolled, setScrolled] = useState(false)
@@ -56,8 +100,8 @@ export default function Navbar() {
     >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2 group">
-        <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }} className="text-2xl">
-          🏠
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
+          <CyprusSvg color={logoColor} />
         </motion.div>
         <span className="font-pacifico text-xl" style={{ color: logoColor }}>
           <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'NordzypernImmo'}</EditableText>
