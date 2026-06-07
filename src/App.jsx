@@ -10,6 +10,7 @@ import Features from './components/Features'
 import Services from './components/Services'
 import About from './components/About'
 import InteractiveSelector from './components/ui/interactive-selector'
+import PropertyMarquee from './components/PropertyMarquee'
 import Reviews from './components/Reviews'
 import Location from './components/Location'
 import Booking from './components/Booking'
@@ -28,6 +29,7 @@ function HomePage({ loaded, setLoaded }) {
         <Features />
         <Services />
         <About />
+        <PropertyMarquee />
         <InteractiveSelector />
         <Reviews />
         <Booking />
