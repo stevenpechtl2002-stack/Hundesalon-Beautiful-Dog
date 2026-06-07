@@ -13,27 +13,66 @@
     "title": "Die besten Gründe für Ihre Investition",
     "subtitle": "Sonne, Rendite und Sicherheit — Nordzypern überzeugt auf ganzer Linie.",
     "items": [
-      { "icon": "☀️", "title": "300 Sonnentage", "desc": "Genießen Sie mediterranes Klima mit über 300 Sonnentagen im Jahr — ein Paradies für Urlauber und Auswanderer." },
-      { "icon": "💰", "title": "40–60% günstiger", "desc": "Immobilienpreise liegen 40–60% unter dem Niveau von Südeuropa — einmaliges Preis-Leistungs-Verhältnis." },
-      { "icon": "📈", "title": "15–20% Wertsteigerung", "desc": "Überdurchschnittliche Wertentwicklung: durchschnittlich 15–20% jährliche Wertsteigerung in Toplagen." },
-      { "icon": "🏖️", "title": "8–12% Mietrendite", "desc": "Attraktive Mietrenditen durch wachsenden Tourismus und internationalen Expat-Markt." },
-      { "icon": "✈️", "title": "Nur 4 Flugstunden", "desc": "Nur 4 Flugstunden von Deutschland — nah genug für regelmäßige Besuche, weit genug für echte Erholung." },
-      { "icon": "⚖️", "title": "100% Rechtssicherheit", "desc": "Volle Eigentumssicherheit mit internationalem Recht — wir begleiten Sie durch den gesamten Kaufprozess." }
+      {
+        "icon": "☀️",
+        "title": "300 Sonnentage",
+        "desc": "Genießen Sie mediterranes Klima mit über 300 Sonnentagen im Jahr — ein Paradies für Urlauber und Auswanderer."
+      },
+      {
+        "icon": "💰",
+        "title": "40–60% günstiger",
+        "desc": "Immobilienpreise liegen 40–60% unter dem Niveau von Südeuropa — einmaliges Preis-Leistungs-Verhältnis."
+      },
+      {
+        "icon": "📈",
+        "title": "15–20% Wertsteigerung",
+        "desc": "Überdurchschnittliche Wertentwicklung: durchschnittlich 15–20% jährliche Wertsteigerung in Toplagen."
+      },
+      {
+        "icon": "🏖️",
+        "title": "8–12% Mietrendite",
+        "desc": "Attraktive Mietrenditen durch wachsenden Tourismus und internationalen Expat-Markt."
+      },
+      {
+        "icon": "✈️",
+        "title": "Nur 4 Flugstunden",
+        "desc": "Nur 4 Flugstunden von Deutschland — nah genug für regelmäßige Besuche, weit genug für echte Erholung."
+      },
+      {
+        "icon": "⚖️",
+        "title": "100% Rechtssicherheit",
+        "desc": "Volle Eigentumssicherheit mit internationalem Recht — wir begleiten Sie durch den gesamten Kaufprozess."
+      }
     ]
   },
   "about": {
     "label": "Über uns",
-    "title": "Ihr Partner für",
+    "title": "Ihr Partner für ",
     "titleHighlight": "Nordzypern",
     "text1": "Willkommen bei NordzypernImmo — Ihrem vertrauenswürdigen Partner für Luxusimmobilien in Nordzypern. Seit über 15 Jahren vermitteln wir exklusive Apartments, Villen und Penthouses mit Meerblick an anspruchsvolle Käufer aus Deutschland, Österreich und der Schweiz.",
     "text2": "Unser erfahrenes Team begleitet Sie von der ersten Besichtigung bis zur Schlüsselübergabe — persönlich, transparent und ohne Verkaufsdruck. Mit 250+ Immobilien im Portfolio und 500+ zufriedenen Kunden sind wir Ihre erste Adresse für Immobilieninvestitionen in Nordzypern.",
     "badge": "Seit über 15 Jahren",
     "badgeSub": "Ihr Partner vor Ort",
-    "image": null,
+    "image": "/images/img-about-image.jpeg",
     "stats": [
-      { "value": 250, "suffix": "+", "label": "Immobilien", "icon": "🏠" },
-      { "value": 15, "suffix": " J.", "label": "Erfahrung", "icon": "🏆" },
-      { "value": 500, "suffix": "+", "label": "Kunden", "icon": "⭐" }
+      {
+        "value": 250,
+        "suffix": "+",
+        "label": "Immobilien",
+        "icon": "🏠"
+      },
+      {
+        "value": 15,
+        "suffix": " J.",
+        "label": "Erfahrung",
+        "icon": "🏆"
+      },
+      {
+        "value": 500,
+        "suffix": "+",
+        "label": "Kunden",
+        "icon": "⭐"
+      }
     ]
   },
   "services": {
@@ -41,12 +80,36 @@
     "title": "Unser Rundum-Service",
     "subtitle": "Von der ersten Beratung bis zur Schlüsselübergabe — wir begleiten Sie auf jedem Schritt",
     "items": [
-      { "icon": "🏡", "title": "Immobilienvermittlung", "desc": "250+ geprüfte Objekte vom Apartment bis zur Luxusvilla — wir finden das Richtige für Sie" },
-      { "icon": "💬", "title": "Kostenlose Beratung", "desc": "Unverbindliche und kostenlose Erstberatung — wir hören zu und verstehen Ihre Wünsche" },
-      { "icon": "📊", "title": "Investmentberatung", "desc": "Fundierte Analyse von Lage, Rendite und Wertsteigerungspotenzial für Ihre Investition" },
-      { "icon": "⚖️", "title": "Rechtsberatung", "desc": "Sichere Kaufabwicklung mit lokalen Anwälten — von der Due Diligence bis zum Notartermin" },
-      { "icon": "🌍", "title": "Vor-Ort-Betreuung", "desc": "Persönliche Begleitung bei Besichtigungen in Kyrenia, Famagusta, Iskele und Nikosia" },
-      { "icon": "🔑", "title": "Schlüsselübergabe", "desc": "Vollständige Übergabe inkl. Einrichtungsservice, Mietverwaltung und Nachbetreuung" }
+      {
+        "icon": "🏡",
+        "title": "Immobilienvermittlung",
+        "desc": "250+ geprüfte Objekte vom Apartment bis zur Luxusvilla — wir finden das Richtige für Sie"
+      },
+      {
+        "icon": "💬",
+        "title": "Kostenlose Beratung",
+        "desc": "Unverbindliche und kostenlose Erstberatung — wir hören zu und verstehen Ihre Wünsche"
+      },
+      {
+        "icon": "📊",
+        "title": "Investmentberatung",
+        "desc": "Fundierte Analyse von Lage, Rendite und Wertsteigerungspotenzial für Ihre Investition"
+      },
+      {
+        "icon": "⚖️",
+        "title": "Rechtsberatung",
+        "desc": "Sichere Kaufabwicklung mit lokalen Anwälten — von der Due Diligence bis zum Notartermin"
+      },
+      {
+        "icon": "🌍",
+        "title": "Vor-Ort-Betreuung",
+        "desc": "Persönliche Begleitung bei Besichtigungen in Kyrenia, Famagusta, Iskele und Nikosia"
+      },
+      {
+        "icon": "🔑",
+        "title": "Schlüsselübergabe",
+        "desc": "Vollständige Übergabe inkl. Einrichtungsservice, Mietverwaltung und Nachbetreuung"
+      }
     ]
   },
   "beforeAfter": {
@@ -54,9 +117,24 @@
     "title": "Aktuelle Highlights 🏠",
     "subtitle": "Exklusive Immobilien in bester Lage — von Strandapartments bis Luxusvillen",
     "pairs": [
-      { "before": null, "after": null, "name": "Kyrenia Residences", "breed": "Ab €185.000 · Meerblick" },
-      { "before": null, "after": null, "name": "Famagusta Bay", "breed": "Ab €155.000 · Strandlage" },
-      { "before": null, "after": null, "name": "Iskele Panorama", "breed": "Ab €245.000 · Penthouse" }
+      {
+        "before": null,
+        "after": null,
+        "name": "Kyrenia Residences",
+        "breed": "Ab €185.000 · Meerblick"
+      },
+      {
+        "before": null,
+        "after": null,
+        "name": "Famagusta Bay",
+        "breed": "Ab €155.000 · Strandlage"
+      },
+      {
+        "before": null,
+        "after": null,
+        "name": "Iskele Panorama",
+        "breed": "Ab €245.000 · Penthouse"
+      }
     ]
   },
   "reviews": {
@@ -65,12 +143,48 @@
     "rating": "4.9",
     "ratingCount": "500+ zufriedene Kunden",
     "items": [
-      { "stars": 5, "text": "Hervorragende Beratung ohne Verkaufsdruck. Wir haben unsere Traumvilla in Kyrenia gefunden und sind überglücklich. Das Team war immer erreichbar!", "author": "Markus S.", "dog": "Kyrenia 🏡", "avatar": "👨‍💼" },
-      { "stars": 5, "text": "Professionell, ehrlich und herzlich. Die Rechtsberatung hat uns sehr geholfen. Unser Apartment ist eine traumhafte Investition geworden!", "author": "Sandra K.", "dog": "Famagusta 🌊", "avatar": "👩‍💼" },
-      { "stars": 5, "text": "Perfekte Betreuung von Anfang bis Ende. Die Rendite übertrifft alle Erwartungen. Klare Empfehlung für jeden der in Nordzypern investieren möchte!", "author": "Thomas M.", "dog": "Iskele 🌴", "avatar": "👨" },
-      { "stars": 5, "text": "Bereits unser zweiter Kauf über NordzypernImmo. Das Vertrauen wurde nie enttäuscht. Kompetent, transparent und immer fair.", "author": "Andrea L.", "dog": "Kyrenia 🏖️", "avatar": "👩" },
-      { "stars": 5, "text": "Als Erstkäufer war ich unsicher — das Team hat mich hervorragend durch den Prozess begleitet. Heute bin ich stolzer Besitzer eines Meeresblick-Apartments!", "author": "Peter W.", "dog": "Esentepe 🌅", "avatar": "👨‍🦳" },
-      { "stars": 5, "text": "Die Mietrendite von über 9% hat alle unsere Erwartungen übertroffen. Absolute Profis mit echtem Herzblut für ihre Arbeit!", "author": "Julia R.", "dog": "Famagusta Bay 💰", "avatar": "👩‍🦱" }
+      {
+        "stars": 5,
+        "text": "Hervorragende Beratung ohne Verkaufsdruck. Wir haben unsere Traumvilla in Kyrenia gefunden und sind überglücklich. Das Team war immer erreichbar!",
+        "author": "Markus S.",
+        "dog": "Kyrenia 🏡",
+        "avatar": "👨‍💼"
+      },
+      {
+        "stars": 5,
+        "text": "Professionell, ehrlich und herzlich. Die Rechtsberatung hat uns sehr geholfen. Unser Apartment ist eine traumhafte Investition geworden!",
+        "author": "Sandra K.",
+        "dog": "Famagusta 🌊",
+        "avatar": "👩‍💼"
+      },
+      {
+        "stars": 5,
+        "text": "Perfekte Betreuung von Anfang bis Ende. Die Rendite übertrifft alle Erwartungen. Klare Empfehlung für jeden der in Nordzypern investieren möchte!",
+        "author": "Thomas M.",
+        "dog": "Iskele 🌴",
+        "avatar": "👨"
+      },
+      {
+        "stars": 5,
+        "text": "Bereits unser zweiter Kauf über NordzypernImmo. Das Vertrauen wurde nie enttäuscht. Kompetent, transparent und immer fair.",
+        "author": "Andrea L.",
+        "dog": "Kyrenia 🏖️",
+        "avatar": "👩"
+      },
+      {
+        "stars": 5,
+        "text": "Als Erstkäufer war ich unsicher — das Team hat mich hervorragend durch den Prozess begleitet. Heute bin ich stolzer Besitzer eines Meeresblick-Apartments!",
+        "author": "Peter W.",
+        "dog": "Esentepe 🌅",
+        "avatar": "👨‍🦳"
+      },
+      {
+        "stars": 5,
+        "text": "Die Mietrendite von über 9% hat alle unsere Erwartungen übertroffen. Absolute Profis mit echtem Herzblut für ihre Arbeit!",
+        "author": "Julia R.",
+        "dog": "Famagusta Bay 💰",
+        "avatar": "👩‍🦱"
+      }
     ]
   },
   "instagram": {
@@ -78,12 +192,30 @@
     "handle": "@nordzypern.immo",
     "url": "https://instagram.com",
     "photos": [
-      { "url": null, "likes": 312 },
-      { "url": null, "likes": 189 },
-      { "url": null, "likes": 445 },
-      { "url": null, "likes": 267 },
-      { "url": null, "likes": 523 },
-      { "url": null, "likes": 198 }
+      {
+        "url": null,
+        "likes": 312
+      },
+      {
+        "url": null,
+        "likes": 189
+      },
+      {
+        "url": null,
+        "likes": 445
+      },
+      {
+        "url": null,
+        "likes": 267
+      },
+      {
+        "url": null,
+        "likes": 523
+      },
+      {
+        "url": null,
+        "likes": 198
+      }
     ]
   },
   "contact": {
@@ -93,8 +225,16 @@
     "email": "info@andreas-pechtl.de"
   },
   "openingHours": [
-    { "days": "Mo – Fr", "hours": "09:00 – 18:00", "isOpen": true },
-    { "days": "Sa – So", "hours": "Nach Absprache", "isOpen": true }
+    {
+      "days": "Mo – Fr",
+      "hours": "09:00 – 18:00",
+      "isOpen": true
+    },
+    {
+      "days": "Sa – So",
+      "hours": "Nach Absprache",
+      "isOpen": true
+    }
   ],
   "colors": {
     "primary": "#1e1a16",
@@ -110,13 +250,35 @@
   },
   "properties": [
     {
-      "id": 1, "inMarquee": true,
-      "title": "Luxusvilla Kyrenia", "location": "Kyrenia · Meerblick", "region": "Kyrenia",
-      "type": "haus", "deal": "kaufen", "price": 485000,
-      "rooms": 4, "baths": 3, "sqm": 220, "year": 2023, "floor": null, "parking": true,
-      "tags": ["Pool", "Neubau", "Meerblick"],
+      "id": 1,
+      "inMarquee": true,
+      "title": "Luxusvilla Kyrenia",
+      "location": "Kyrenia · Meerblick",
+      "region": "Kyrenia",
+      "type": "haus",
+      "deal": "kaufen",
+      "price": 485000,
+      "rooms": 4,
+      "baths": 3,
+      "sqm": 220,
+      "year": 2023,
+      "floor": null,
+      "parking": true,
+      "tags": [
+        "Pool",
+        "Neubau",
+        "Meerblick"
+      ],
       "description": "Atemberaubende Luxusvilla in der begehrtesten Lage Kyrenia mit direktem Meerblick. Das moderne Anwesen verfügt über großzügige Wohnflächen, einen privaten Infinitypool und hochwertige Ausstattung.",
-      "features": ["Infinitypool", "Klimaanlage", "Terrasse 80 m²", "Garage 2 Stellplätze", "Smart Home", "Einbauküche", "Alarmanlage"],
+      "features": [
+        "Infinitypool",
+        "Klimaanlage",
+        "Terrasse 80 m²",
+        "Garage 2 Stellplätze",
+        "Smart Home",
+        "Einbauküche",
+        "Alarmanlage"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80",
@@ -124,13 +286,33 @@
       ]
     },
     {
-      "id": 2, "inMarquee": true,
-      "title": "Apartment mit Panoramablick", "location": "Kyrenia Zentrum", "region": "Kyrenia",
-      "type": "wohnung", "deal": "kaufen", "price": 189000,
-      "rooms": 2, "baths": 1, "sqm": 85, "year": 2022, "floor": 4, "parking": true,
-      "tags": ["Meerblick", "Balkon"],
+      "id": 2,
+      "inMarquee": true,
+      "title": "Apartment mit Panoramablick",
+      "location": "Kyrenia Zentrum",
+      "region": "Kyrenia",
+      "type": "wohnung",
+      "deal": "kaufen",
+      "price": 189000,
+      "rooms": 2,
+      "baths": 1,
+      "sqm": 85,
+      "year": 2022,
+      "floor": 4,
+      "parking": true,
+      "tags": [
+        "Meerblick",
+        "Balkon"
+      ],
       "description": "Modernes Apartment im Herzen von Kyrenia mit atemberaubendem Panoramablick auf das Mittelmeer. Hochwertige Ausstattung, großer Balkon und optimale Lage.",
-      "features": ["Balkon 20 m²", "Klimaanlage", "Einbauküche", "Aufzug", "Gemeinschaftspool", "Tiefgarage"],
+      "features": [
+        "Balkon 20 m²",
+        "Klimaanlage",
+        "Einbauküche",
+        "Aufzug",
+        "Gemeinschaftspool",
+        "Tiefgarage"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
@@ -138,13 +320,35 @@
       ]
     },
     {
-      "id": 3, "inMarquee": true,
-      "title": "Villa direkt am Strand", "location": "Famagusta · Strandlage", "region": "Famagusta",
-      "type": "haus", "deal": "kaufen", "price": 620000,
-      "rooms": 5, "baths": 4, "sqm": 310, "year": 2021, "floor": null, "parking": true,
-      "tags": ["Strandlage", "Pool", "Garten"],
+      "id": 3,
+      "inMarquee": true,
+      "title": "Villa direkt am Strand",
+      "location": "Famagusta · Strandlage",
+      "region": "Famagusta",
+      "type": "haus",
+      "deal": "kaufen",
+      "price": 620000,
+      "rooms": 5,
+      "baths": 4,
+      "sqm": 310,
+      "year": 2021,
+      "floor": null,
+      "parking": true,
+      "tags": [
+        "Strandlage",
+        "Pool",
+        "Garten"
+      ],
       "description": "Exklusive Strandvilla in Famagusta mit direktem Strandzugang. Das großzügige Anwesen bietet 310 m² Wohnfläche, einen privaten Pool und einen tropisch bepflanzten Garten.",
-      "features": ["Privater Strand", "Pool 60 m²", "Garten 800 m²", "Klimaanlage", "5 Schlafzimmer", "Gästehaus", "Bootsanleger"],
+      "features": [
+        "Privater Strand",
+        "Pool 60 m²",
+        "Garten 800 m²",
+        "Klimaanlage",
+        "5 Schlafzimmer",
+        "Gästehaus",
+        "Bootsanleger"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
@@ -152,13 +356,33 @@
       ]
     },
     {
-      "id": 4, "inMarquee": false,
-      "title": "Modernes Studio-Apartment", "location": "Kyrenia Hafen", "region": "Kyrenia",
-      "type": "wohnung", "deal": "mieten", "price": 950,
-      "rooms": 1, "baths": 1, "sqm": 48, "year": 2020, "floor": 3, "parking": false,
-      "tags": ["Möbliert", "Hafenblick"],
+      "id": 4,
+      "inMarquee": false,
+      "title": "Modernes Studio-Apartment",
+      "location": "Kyrenia Hafen",
+      "region": "Kyrenia",
+      "type": "wohnung",
+      "deal": "mieten",
+      "price": 950,
+      "rooms": 1,
+      "baths": 1,
+      "sqm": 48,
+      "year": 2020,
+      "floor": 3,
+      "parking": false,
+      "tags": [
+        "Möbliert",
+        "Hafenblick"
+      ],
       "description": "Stilvolles Studio-Apartment mit traumhaftem Blick auf den historischen Hafen von Kyrenia. Komplett möbliert und sofort bezugsfertig.",
-      "features": ["Vollmöbliert", "Klimaanlage", "WLAN", "Balkon", "Gemeinschaftspool", "Hafenblick"],
+      "features": [
+        "Vollmöbliert",
+        "Klimaanlage",
+        "WLAN",
+        "Balkon",
+        "Gemeinschaftspool",
+        "Hafenblick"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
@@ -166,13 +390,35 @@
       ]
     },
     {
-      "id": 5, "inMarquee": true,
-      "title": "Penthouse mit Infinitypool", "location": "Iskele · Dachterrasse", "region": "Iskele",
-      "type": "wohnung", "deal": "kaufen", "price": 295000,
-      "rooms": 3, "baths": 2, "sqm": 140, "year": 2024, "floor": 8, "parking": true,
-      "tags": ["Pool", "Neubau", "Dachterrasse"],
+      "id": 5,
+      "inMarquee": true,
+      "title": "Penthouse mit Infinitypool",
+      "location": "Iskele · Dachterrasse",
+      "region": "Iskele",
+      "type": "wohnung",
+      "deal": "kaufen",
+      "price": 295000,
+      "rooms": 3,
+      "baths": 2,
+      "sqm": 140,
+      "year": 2024,
+      "floor": 8,
+      "parking": true,
+      "tags": [
+        "Pool",
+        "Neubau",
+        "Dachterrasse"
+      ],
       "description": "Spektakuläres Penthouse mit eigenem Infinitypool auf der Dachterrasse. Atemberaubender 360-Grad-Blick auf das Mittelmeer und die umliegenden Berge.",
-      "features": ["Privater Infinitypool", "Dachterrasse 120 m²", "Klimaanlage", "3 Schlafzimmer", "Smart Home", "Tiefgarage", "Concierge"],
+      "features": [
+        "Privater Infinitypool",
+        "Dachterrasse 120 m²",
+        "Klimaanlage",
+        "3 Schlafzimmer",
+        "Smart Home",
+        "Tiefgarage",
+        "Concierge"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
@@ -180,13 +426,35 @@
       ]
     },
     {
-      "id": 6, "inMarquee": true,
-      "title": "Ferienhaus mit Bergblick", "location": "Bellapais · Bergblick", "region": "Kyrenia",
-      "type": "haus", "deal": "mieten", "price": 2400,
-      "rooms": 3, "baths": 2, "sqm": 160, "year": 2018, "floor": null, "parking": true,
-      "tags": ["Bergblick", "Garten", "Möbliert"],
+      "id": 6,
+      "inMarquee": true,
+      "title": "Ferienhaus mit Bergblick",
+      "location": "Bellapais · Bergblick",
+      "region": "Kyrenia",
+      "type": "haus",
+      "deal": "mieten",
+      "price": 2400,
+      "rooms": 3,
+      "baths": 2,
+      "sqm": 160,
+      "year": 2018,
+      "floor": null,
+      "parking": true,
+      "tags": [
+        "Bergblick",
+        "Garten",
+        "Möbliert"
+      ],
       "description": "Charmantes Ferienhaus im malerischen Bellapais. Vollständig möbliert mit großem Garten und spektakulärem Bergblick.",
-      "features": ["Vollmöbliert", "Garten 400 m²", "Klimaanlage", "Kamin", "Grill/BBQ", "Bergblick", "Ruhige Lage"],
+      "features": [
+        "Vollmöbliert",
+        "Garten 400 m²",
+        "Klimaanlage",
+        "Kamin",
+        "Grill/BBQ",
+        "Bergblick",
+        "Ruhige Lage"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
@@ -194,13 +462,33 @@
       ]
     },
     {
-      "id": 7, "inMarquee": false,
-      "title": "City Apartment Nikosia", "location": "Nikosia · Zentrum", "region": "Nikosia",
-      "type": "wohnung", "deal": "kaufen", "price": 155000,
-      "rooms": 2, "baths": 1, "sqm": 72, "year": 2024, "floor": 2, "parking": true,
-      "tags": ["Zentral", "Neubau"],
+      "id": 7,
+      "inMarquee": false,
+      "title": "City Apartment Nikosia",
+      "location": "Nikosia · Zentrum",
+      "region": "Nikosia",
+      "type": "wohnung",
+      "deal": "kaufen",
+      "price": 155000,
+      "rooms": 2,
+      "baths": 1,
+      "sqm": 72,
+      "year": 2024,
+      "floor": 2,
+      "parking": true,
+      "tags": [
+        "Zentral",
+        "Neubau"
+      ],
       "description": "Modernes Apartment in zentraler Lage in Nikosia. Ideale Anbindung und hochwertige Ausstattung.",
-      "features": ["Klimaanlage", "Aufzug", "Tiefgarage", "Einbauküche", "Balkon 15 m²", "Neubau 2024"],
+      "features": [
+        "Klimaanlage",
+        "Aufzug",
+        "Tiefgarage",
+        "Einbauküche",
+        "Balkon 15 m²",
+        "Neubau 2024"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
@@ -208,13 +496,35 @@
       ]
     },
     {
-      "id": 8, "inMarquee": true,
-      "title": "Doppelhaushälfte Esentepe", "location": "Esentepe · Panorama", "region": "Kyrenia",
-      "type": "haus", "deal": "kaufen", "price": 245000,
-      "rooms": 3, "baths": 2, "sqm": 175, "year": 2019, "floor": null, "parking": true,
-      "tags": ["Meerblick", "Garten", "Garage"],
+      "id": 8,
+      "inMarquee": true,
+      "title": "Doppelhaushälfte Esentepe",
+      "location": "Esentepe · Panorama",
+      "region": "Kyrenia",
+      "type": "haus",
+      "deal": "kaufen",
+      "price": 245000,
+      "rooms": 3,
+      "baths": 2,
+      "sqm": 175,
+      "year": 2019,
+      "floor": null,
+      "parking": true,
+      "tags": [
+        "Meerblick",
+        "Garten",
+        "Garage"
+      ],
       "description": "Gepflegte Doppelhaushälfte in Esentepe mit herrlichem Meerblick. Großzügiger Garten, private Garage und ruhige Wohnlage.",
-      "features": ["Meerblick", "Garten 350 m²", "Garage", "Klimaanlage", "Kamin", "Terrasse 40 m²", "Swimmingpool möglich"],
+      "features": [
+        "Meerblick",
+        "Garten 350 m²",
+        "Garage",
+        "Klimaanlage",
+        "Kamin",
+        "Terrasse 40 m²",
+        "Swimmingpool möglich"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
@@ -222,13 +532,35 @@
       ]
     },
     {
-      "id": 9, "inMarquee": true,
-      "title": "Long Beach Apartment", "location": "Long Beach · Iskele", "region": "Iskele",
-      "type": "wohnung", "deal": "mieten", "price": 1800,
-      "rooms": 2, "baths": 2, "sqm": 95, "year": 2022, "floor": 1, "parking": false,
-      "tags": ["Strandlage", "Pool", "Möbliert"],
+      "id": 9,
+      "inMarquee": true,
+      "title": "Long Beach Apartment",
+      "location": "Long Beach · Iskele",
+      "region": "Iskele",
+      "type": "wohnung",
+      "deal": "mieten",
+      "price": 1800,
+      "rooms": 2,
+      "baths": 2,
+      "sqm": 95,
+      "year": 2022,
+      "floor": 1,
+      "parking": false,
+      "tags": [
+        "Strandlage",
+        "Pool",
+        "Möbliert"
+      ],
       "description": "Traumhaftes Apartment direkt am berühmten Long Beach in Iskele. Vollmöbliert mit direktem Strandzugang und Gemeinschaftspool.",
-      "features": ["Direkter Strandzugang", "Gemeinschaftspool", "Vollmöbliert", "Klimaanlage", "WLAN", "Balkon mit Meerblick", "Fitness-Center"],
+      "features": [
+        "Direkter Strandzugang",
+        "Gemeinschaftspool",
+        "Vollmöbliert",
+        "Klimaanlage",
+        "WLAN",
+        "Balkon mit Meerblick",
+        "Fitness-Center"
+      ],
       "images": [
         "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
         "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
