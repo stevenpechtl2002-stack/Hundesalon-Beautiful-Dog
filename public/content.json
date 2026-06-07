@@ -107,5 +107,133 @@
   "footer": {
     "tagline": "Ihr vertrauenswürdiger Partner für Luxusimmobilien in Nordzypern — professionell, persönlich und mit über 15 Jahren Erfahrung.",
     "copyright": "© 2025 NordzypernImmo. Alle Rechte vorbehalten."
-  }
+  },
+  "properties": [
+    {
+      "id": 1, "inMarquee": true,
+      "title": "Luxusvilla Kyrenia", "location": "Kyrenia · Meerblick", "region": "Kyrenia",
+      "type": "haus", "deal": "kaufen", "price": 485000,
+      "rooms": 4, "baths": 3, "sqm": 220, "year": 2023, "floor": null, "parking": true,
+      "tags": ["Pool", "Neubau", "Meerblick"],
+      "description": "Atemberaubende Luxusvilla in der begehrtesten Lage Kyrenia mit direktem Meerblick. Das moderne Anwesen verfügt über großzügige Wohnflächen, einen privaten Infinitypool und hochwertige Ausstattung.",
+      "features": ["Infinitypool", "Klimaanlage", "Terrasse 80 m²", "Garage 2 Stellplätze", "Smart Home", "Einbauküche", "Alarmanlage"],
+      "images": [
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 2, "inMarquee": true,
+      "title": "Apartment mit Panoramablick", "location": "Kyrenia Zentrum", "region": "Kyrenia",
+      "type": "wohnung", "deal": "kaufen", "price": 189000,
+      "rooms": 2, "baths": 1, "sqm": 85, "year": 2022, "floor": 4, "parking": true,
+      "tags": ["Meerblick", "Balkon"],
+      "description": "Modernes Apartment im Herzen von Kyrenia mit atemberaubendem Panoramablick auf das Mittelmeer. Hochwertige Ausstattung, großer Balkon und optimale Lage.",
+      "features": ["Balkon 20 m²", "Klimaanlage", "Einbauküche", "Aufzug", "Gemeinschaftspool", "Tiefgarage"],
+      "images": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 3, "inMarquee": true,
+      "title": "Villa direkt am Strand", "location": "Famagusta · Strandlage", "region": "Famagusta",
+      "type": "haus", "deal": "kaufen", "price": 620000,
+      "rooms": 5, "baths": 4, "sqm": 310, "year": 2021, "floor": null, "parking": true,
+      "tags": ["Strandlage", "Pool", "Garten"],
+      "description": "Exklusive Strandvilla in Famagusta mit direktem Strandzugang. Das großzügige Anwesen bietet 310 m² Wohnfläche, einen privaten Pool und einen tropisch bepflanzten Garten.",
+      "features": ["Privater Strand", "Pool 60 m²", "Garten 800 m²", "Klimaanlage", "5 Schlafzimmer", "Gästehaus", "Bootsanleger"],
+      "images": [
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 4, "inMarquee": false,
+      "title": "Modernes Studio-Apartment", "location": "Kyrenia Hafen", "region": "Kyrenia",
+      "type": "wohnung", "deal": "mieten", "price": 950,
+      "rooms": 1, "baths": 1, "sqm": 48, "year": 2020, "floor": 3, "parking": false,
+      "tags": ["Möbliert", "Hafenblick"],
+      "description": "Stilvolles Studio-Apartment mit traumhaftem Blick auf den historischen Hafen von Kyrenia. Komplett möbliert und sofort bezugsfertig.",
+      "features": ["Vollmöbliert", "Klimaanlage", "WLAN", "Balkon", "Gemeinschaftspool", "Hafenblick"],
+      "images": [
+        "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 5, "inMarquee": true,
+      "title": "Penthouse mit Infinitypool", "location": "Iskele · Dachterrasse", "region": "Iskele",
+      "type": "wohnung", "deal": "kaufen", "price": 295000,
+      "rooms": 3, "baths": 2, "sqm": 140, "year": 2024, "floor": 8, "parking": true,
+      "tags": ["Pool", "Neubau", "Dachterrasse"],
+      "description": "Spektakuläres Penthouse mit eigenem Infinitypool auf der Dachterrasse. Atemberaubender 360-Grad-Blick auf das Mittelmeer und die umliegenden Berge.",
+      "features": ["Privater Infinitypool", "Dachterrasse 120 m²", "Klimaanlage", "3 Schlafzimmer", "Smart Home", "Tiefgarage", "Concierge"],
+      "images": [
+        "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 6, "inMarquee": true,
+      "title": "Ferienhaus mit Bergblick", "location": "Bellapais · Bergblick", "region": "Kyrenia",
+      "type": "haus", "deal": "mieten", "price": 2400,
+      "rooms": 3, "baths": 2, "sqm": 160, "year": 2018, "floor": null, "parking": true,
+      "tags": ["Bergblick", "Garten", "Möbliert"],
+      "description": "Charmantes Ferienhaus im malerischen Bellapais. Vollständig möbliert mit großem Garten und spektakulärem Bergblick.",
+      "features": ["Vollmöbliert", "Garten 400 m²", "Klimaanlage", "Kamin", "Grill/BBQ", "Bergblick", "Ruhige Lage"],
+      "images": [
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 7, "inMarquee": false,
+      "title": "City Apartment Nikosia", "location": "Nikosia · Zentrum", "region": "Nikosia",
+      "type": "wohnung", "deal": "kaufen", "price": 155000,
+      "rooms": 2, "baths": 1, "sqm": 72, "year": 2024, "floor": 2, "parking": true,
+      "tags": ["Zentral", "Neubau"],
+      "description": "Modernes Apartment in zentraler Lage in Nikosia. Ideale Anbindung und hochwertige Ausstattung.",
+      "features": ["Klimaanlage", "Aufzug", "Tiefgarage", "Einbauküche", "Balkon 15 m²", "Neubau 2024"],
+      "images": [
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 8, "inMarquee": true,
+      "title": "Doppelhaushälfte Esentepe", "location": "Esentepe · Panorama", "region": "Kyrenia",
+      "type": "haus", "deal": "kaufen", "price": 245000,
+      "rooms": 3, "baths": 2, "sqm": 175, "year": 2019, "floor": null, "parking": true,
+      "tags": ["Meerblick", "Garten", "Garage"],
+      "description": "Gepflegte Doppelhaushälfte in Esentepe mit herrlichem Meerblick. Großzügiger Garten, private Garage und ruhige Wohnlage.",
+      "features": ["Meerblick", "Garten 350 m²", "Garage", "Klimaanlage", "Kamin", "Terrasse 40 m²", "Swimmingpool möglich"],
+      "images": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80"
+      ]
+    },
+    {
+      "id": 9, "inMarquee": true,
+      "title": "Long Beach Apartment", "location": "Long Beach · Iskele", "region": "Iskele",
+      "type": "wohnung", "deal": "mieten", "price": 1800,
+      "rooms": 2, "baths": 2, "sqm": 95, "year": 2022, "floor": 1, "parking": false,
+      "tags": ["Strandlage", "Pool", "Möbliert"],
+      "description": "Traumhaftes Apartment direkt am berühmten Long Beach in Iskele. Vollmöbliert mit direktem Strandzugang und Gemeinschaftspool.",
+      "features": ["Direkter Strandzugang", "Gemeinschaftspool", "Vollmöbliert", "Klimaanlage", "WLAN", "Balkon mit Meerblick", "Fitness-Center"],
+      "images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
+      ]
+    }
+  ]
 }
