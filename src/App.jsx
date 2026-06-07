@@ -8,7 +8,7 @@ import Hero from './components/Hero'
 import Features from './components/Features'
 import Services from './components/Services'
 import About from './components/About'
-import BeforeAfter from './components/BeforeAfter'
+import InteractiveSelector from './components/ui/interactive-selector'
 import Reviews from './components/Reviews'
 import Location from './components/Location'
 import Booking from './components/Booking'
@@ -31,7 +31,7 @@ export default function App() {
           <Features />
           <Services />
           <About />
-          <BeforeAfter />
+          <InteractiveSelector />
           <Reviews />
           <Booking />
           <Location />
