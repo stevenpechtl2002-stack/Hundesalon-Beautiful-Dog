@@ -14,7 +14,6 @@ import PropertyMarquee from './components/PropertyMarquee'
 import Reviews from './components/Reviews'
 import Location from './components/Location'
 import Booking from './components/Booking'
-import Instagram from './components/Instagram'
 import Footer from './components/Footer'
 import PropertiesPage from './pages/PropertiesPage'
 import PropertyDetailPage from './pages/PropertyDetailPage'
@@ -36,7 +35,6 @@ function HomePage({ loaded, setLoaded }) {
         <Reviews />
         <Booking />
         <Location />
-        <Instagram />
       </main>
       <Footer />
     </>
