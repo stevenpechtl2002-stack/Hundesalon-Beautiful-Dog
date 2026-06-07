@@ -17,6 +17,7 @@ import Booking from './components/Booking'
 import Instagram from './components/Instagram'
 import Footer from './components/Footer'
 import PropertiesPage from './pages/PropertiesPage'
+import PropertyDetailPage from './pages/PropertyDetailPage'
 
 function HomePage({ loaded, setLoaded }) {
   return (
@@ -53,6 +54,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage loaded={loaded} setLoaded={setLoaded} />} />
             <Route path="/immobilien" element={<PropertiesPage />} />
+            <Route path="/immobilien/:id" element={<PropertyDetailPage />} />
           </Routes>
         </div>
       </AdminProvider>

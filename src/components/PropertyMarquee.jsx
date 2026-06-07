@@ -1,112 +1,34 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaBed, FaBath, FaRulerCombined } from 'react-icons/fa'
-
-const CARDS = [
-  {
-    title: 'Luxusvilla Kyrenia',
-    location: 'Kyrenia · Meerblick',
-    price: '€ 485.000',
-    deal: 'Kaufen',
-    rooms: 4, baths: 3, sqm: 220,
-    tags: ['Pool', 'Neubau'],
-    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Strandvilla Famagusta',
-    location: 'Famagusta · Strandlage',
-    price: '€ 620.000',
-    deal: 'Kaufen',
-    rooms: 5, baths: 4, sqm: 310,
-    tags: ['Strand', 'Garten'],
-    image: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Penthouse Iskele',
-    location: 'Iskele · Dachterrasse',
-    price: '€ 295.000',
-    deal: 'Kaufen',
-    rooms: 3, baths: 2, sqm: 140,
-    tags: ['Pool', 'Neubau'],
-    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Apartment Kyrenia Hafen',
-    location: 'Kyrenia · Hafenblick',
-    price: '€ 189.000',
-    deal: 'Kaufen',
-    rooms: 2, baths: 1, sqm: 85,
-    tags: ['Balkon', 'Möbliert'],
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Bergvilla Bellapais',
-    location: 'Bellapais · Bergblick',
-    price: '€ 2.400 / Mo',
-    deal: 'Mieten',
-    rooms: 3, baths: 2, sqm: 160,
-    tags: ['Garten', 'Möbliert'],
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'City Apartment Nikosia',
-    location: 'Nikosia · Zentrum',
-    price: '€ 155.000',
-    deal: 'Kaufen',
-    rooms: 2, baths: 1, sqm: 72,
-    tags: ['Zentral', 'Neubau'],
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Esentepe Residenz',
-    location: 'Esentepe · Panorama',
-    price: '€ 245.000',
-    deal: 'Kaufen',
-    rooms: 3, baths: 2, sqm: 175,
-    tags: ['Meerblick', 'Garage'],
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    title: 'Long Beach Apartment',
-    location: 'Iskele · Long Beach',
-    price: '€ 1.800 / Mo',
-    deal: 'Mieten',
-    rooms: 2, baths: 2, sqm: 95,
-    tags: ['Strand', 'Pool'],
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
-  },
-]
+import { PROPERTIES } from '../data/properties'
 
 function Card({ card }) {
-  const isRent = card.deal === 'Mieten'
+  const isRent = card.deal === 'mieten'
   return (
-    <div
-      className="flex-shrink-0 rounded-3xl overflow-hidden bg-white group cursor-pointer"
-      style={{
-        width: 300,
-        boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
-        border: '1px solid #eee',
-      }}
+    <Link
+      to={`/immobilien/${card.id}`}
+      className="flex-shrink-0 rounded-3xl overflow-hidden bg-white group"
+      style={{ width: 300, boxShadow: '0 4px 28px rgba(0,0,0,0.09)', border: '1px solid #eee', display: 'block' }}
     >
       {/* Image */}
       <div className="relative overflow-hidden" style={{ height: 190 }}>
         <img
-          src={card.image}
+          src={card.images[0]}
           alt={card.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 55%)' }} />
         <div className="absolute top-3 left-3 flex gap-1.5">
-          {card.tags.map(t => (
+          {card.tags.slice(0, 2).map(t => (
             <span key={t} className="font-nunito font-700 text-xs px-2.5 py-1 rounded-full bg-white text-gray-700"
               style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.12)' }}>{t}</span>
           ))}
         </div>
-        <span
-          className="absolute bottom-3 left-3 font-nunito font-800 text-xs px-3 py-1 rounded-full text-white"
-          style={{ background: isRent ? '#0ea5e9' : 'var(--site-btn, #1e1a16)' }}
-        >
-          {card.deal}
+        <span className="absolute bottom-3 left-3 font-nunito font-800 text-xs px-3 py-1 rounded-full text-white"
+          style={{ background: isRent ? '#0ea5e9' : 'var(--site-btn, #1e1a16)' }}>
+          {isRent ? 'Mieten' : 'Kaufen'}
         </span>
       </div>
 
@@ -120,23 +42,21 @@ function Card({ card }) {
           <span className="flex items-center gap-1.5"><FaRulerCombined size={11} /> {card.sqm} m²</span>
         </div>
         <div className="flex items-center justify-between">
-          <p className="font-playfair text-xl text-gray-900" style={{ fontWeight: 700 }}>{card.price}</p>
-          <a
-            href="/immobilien"
-            className="font-nunito font-700 text-xs px-4 py-2 rounded-xl text-white"
-            style={{ background: 'var(--site-btn, #1e1a16)' }}
-            onClick={e => e.stopPropagation()}
-          >
+          <p className="font-playfair text-xl text-gray-900" style={{ fontWeight: 700 }}>
+            €{card.price.toLocaleString('de-DE')}{isRent && <span className="text-sm text-gray-400 font-nunito font-400">/Mo</span>}
+          </p>
+          <span className="font-nunito font-700 text-xs px-4 py-2 rounded-xl text-white"
+            style={{ background: 'var(--site-btn, #1e1a16)' }}>
             Details →
-          </a>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
 export default function PropertyMarquee() {
-  const doubled = [...CARDS, ...CARDS]
+  const doubled = [...PROPERTIES, ...PROPERTIES]
   const [paused, setPaused] = useState(false)
 
   return (
