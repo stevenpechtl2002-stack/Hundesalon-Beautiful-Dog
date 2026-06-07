@@ -1,87 +1,84 @@
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
+import { TestimonialsColumn } from './ui/testimonials-columns-1'
 
-function Card({ r, index }) {
-  return (
-    <div className="min-w-[300px] max-w-[300px] mx-3 bg-white rounded-3xl p-6 flex flex-col gap-3"
-      style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
-      <div className="flex gap-0.5">{Array(r.stars).fill(0).map((_, i) => <span key={i} className="text-yellow-400">★</span>)}</div>
-      <p className="font-nunito text-gray-600 text-sm leading-relaxed flex-1 italic">
-        "<EditableText path={`reviews.items.${index}.text`} tag="span">{r.text}</EditableText>"
-      </p>
-      <div className="flex items-center gap-3 pt-2 border-t border-gray-50">
-        <div className="w-9 h-9 rounded-full flex items-center justify-center text-lg" style={{ background: 'var(--site-card-bg, #f5f3f0)' }}>
-          <EditableText path={`reviews.items.${index}.avatar`} tag="span">{r.avatar}</EditableText>
-        </div>
-        <div>
-          <EditableText path={`reviews.items.${index}.author`} tag="p" className="font-nunito font-700 text-gray-800 text-sm">{r.author}</EditableText>
-          <EditableText path={`reviews.items.${index}.dog`} tag="p" className="font-nunito text-gray-400 text-xs">{r.dog}</EditableText>
-        </div>
-      </div>
-    </div>
-  )
-}
+const FALLBACK_TESTIMONIALS = [
+  { text: 'Wir haben über NordzypernImmo unsere Traumvilla in Kyrenia gefunden. Die Beratung war erstklassig und der gesamte Kaufprozess reibungslos.', name: 'Markus & Julia S.', role: 'Käufer · Kyrenia', stars: 5 },
+  { text: 'Als Erstkäufer in Nordzypern war ich unsicher. Das Team hat mich von Anfang bis Ende begleitet. Absolute Empfehlung!', name: 'Thomas B.', role: 'Käufer · Famagusta', stars: 5 },
+  { text: 'Innerhalb von drei Wochen hatten wir unser Ferienhaus gefunden. Professionell, ehrlich und immer erreichbar.', name: 'Sandra M.', role: 'Käuferin · Iskele', stars: 5 },
+  { text: 'Die Immobilienauswahl ist hervorragend und die Preise fair. Unser Apartment in Nikosia ist genau das, was wir gesucht haben.', name: 'Peter & Anna K.', role: 'Käufer · Nikosia', stars: 5 },
+  { text: 'NordzypernImmo hat uns bei allen rechtlichen Fragen geholfen. Ohne diese Unterstützung wäre der Kauf in einem fremden Land viel schwieriger gewesen.', name: 'Klaus H.', role: 'Investor · Kyrenia', stars: 5 },
+  { text: 'Fantastischer Service! Wir haben unser Penthouse deutlich unter dem Marktwert erworben dank der Marktkenntnisse des Teams.', name: 'Michael & Lisa F.', role: 'Käufer · Long Beach', stars: 5 },
+  { text: 'Transparente Kommunikation, keine versteckten Kosten. Endlich ein Makler dem man vertrauen kann.', name: 'Renate W.', role: 'Käuferin · Esentepe', stars: 5 },
+  { text: 'Von der ersten Besichtigung bis zur Schlüsselübergabe wurde alles perfekt koordiniert. Danke für alles!', name: 'Stefan P.', role: 'Käufer · Famagusta', stars: 5 },
+  { text: 'Ich lebe seit zwei Jahren in meiner Villa und bin täglich dankbar, diesen Schritt gewagt zu haben. NordzypernImmo machte es möglich.', name: 'Brigitte L.', role: 'Käuferin · Kyrenia', stars: 5 },
+]
 
 export default function Reviews() {
   const { content } = useAdmin()
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    let pos = 0, paused = false
-    const total = el.scrollWidth / 2
-    const tick = () => {
-      if (!paused) { pos += 0.5; if (pos >= total) pos = 0; el.style.transform = `translateX(-${pos}px)` }
-      raf = requestAnimationFrame(tick)
-    }
-    let raf = requestAnimationFrame(tick)
-    el.addEventListener('mouseenter', () => paused = true)
-    el.addEventListener('mouseleave', () => paused = false)
-    return () => cancelAnimationFrame(raf)
-  }, [content])
-
   if (!content) return null
   const { reviews } = content
 
+  const rawItems = reviews?.items || []
+  const testimonials = rawItems.length >= 6
+    ? rawItems.map(r => ({ text: r.text, name: r.author, role: r.dog || 'Kunde', stars: r.stars ?? 5 }))
+    : FALLBACK_TESTIMONIALS
+
+  const col1 = testimonials.slice(0, 3)
+  const col2 = testimonials.slice(3, 6)
+  const col3 = testimonials.slice(6, 9)
+
   return (
-    <section id="bewertungen" className="py-24 overflow-hidden" style={{ background: 'var(--site-bg, #FAFAFA)' }}>
+    <section id="bewertungen" className="py-24 relative overflow-hidden" style={{ background: 'var(--site-bg, #FAFAFA)' }}>
       <div className="max-w-7xl mx-auto px-8 md:px-16">
-        <motion.div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14"
-          initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-          <div>
-            <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full"
-              style={{ background: 'var(--site-badge-bg, #f0ede8)', color: 'var(--site-badge-text, #7a6e65)' }}>
-              <EditableText path="reviews.label">{reviews.label}</EditableText>
-            </span>
-            <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900 mt-2">
-              <EditableText path="reviews.title">{reviews.title}</EditableText>
-            </h2>
-          </div>
-          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white" style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
-            <span className="font-pacifico text-3xl text-gray-900">
-              <EditableText path="reviews.rating">{reviews.rating}</EditableText>
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-2xl mx-auto mb-14 text-center"
+        >
+          <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-4 px-4 py-1.5 rounded-full"
+            style={{ background: 'var(--site-badge-bg, #f0ede8)', color: 'var(--site-badge-text, #7a6e65)' }}>
+            <EditableText path="reviews.label">{reviews?.label || 'Kundenstimmen'}</EditableText>
+          </span>
+          <h2 className="font-playfair text-3xl md:text-5xl text-gray-900 mb-4" style={{ fontWeight: 700 }}>
+            <EditableText path="reviews.title">{reviews?.title || 'Was unsere Kunden sagen'}</EditableText>
+          </h2>
+          <p className="font-nunito text-gray-400 text-sm">
+            Echte Erfahrungen von Käufern und Mietern in Nordzypern
+          </p>
+
+          {/* Rating badge */}
+          <div className="flex items-center gap-3 mt-6 px-5 py-3 rounded-2xl bg-white" style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.07)', border: '1px solid #eee' }}>
+            <span className="font-playfair text-3xl text-gray-900" style={{ fontWeight: 700 }}>
+              <EditableText path="reviews.rating">{reviews?.rating || '4.9'}</EditableText>
             </span>
             <div>
               <div className="flex text-yellow-400 text-sm">★★★★★</div>
               <p className="font-nunito text-gray-400 text-xs">
-                <EditableText path="reviews.ratingCount">{reviews.ratingCount}</EditableText>
+                <EditableText path="reviews.ratingCount">{reviews?.ratingCount || 'Aus über 120 Bewertungen'}</EditableText>
               </p>
             </div>
           </div>
         </motion.div>
-      </div>
 
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #FAFAFA, transparent)' }} />
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #FAFAFA, transparent)' }} />
-        <div className="overflow-hidden">
-          <div ref={ref} className="flex py-2 will-change-transform" style={{ width: 'max-content' }}>
-            {[...reviews.items, ...reviews.items].map((r, i) => <Card key={i} r={r} index={i % reviews.items.length} />)}
-          </div>
+        {/* Columns */}
+        <div
+          className="flex justify-center gap-6 mt-4"
+          style={{
+            maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+            maxHeight: 720,
+            overflow: 'hidden',
+          }}
+        >
+          <TestimonialsColumn testimonials={col1} duration={18} />
+          <TestimonialsColumn testimonials={col2} duration={22} className="hidden md:block" />
+          <TestimonialsColumn testimonials={col3} duration={20} className="hidden lg:block" />
         </div>
       </div>
     </section>
