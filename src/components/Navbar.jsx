@@ -13,43 +13,43 @@ const ANCHOR_LINKS = [
 
 function CyprusSvg({ color = 'white' }) {
   return (
-    <svg width="38" height="28" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Cyprus island silhouette — top-down view */}
+    <svg width="44" height="30" viewBox="0 0 220 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/*
+        Cyprus outline — single path tracing the coastline clockwise.
+        West coast → north coast → Karpaz peninsula → south coast → back west.
+      */}
       <path
         d="
-          M 18 72
-          C 20 65, 28 58, 38 54
-          C 48 50, 52 44, 58 40
-          C 64 36, 72 32, 80 30
-          C 90 28, 100 26, 110 27
-          C 120 28, 128 30, 136 35
-          C 144 40, 150 46, 154 50
-          C 162 48, 170 44, 176 42
-          C 180 40, 183 41, 182 45
-          C 181 49, 176 52, 170 55
-          C 164 58, 158 58, 154 60
-          C 152 66, 148 72, 142 78
-          C 136 84, 128 88, 118 90
-          C 108 92, 96 92, 84 90
-          C 72 88, 60 84, 50 80
-          C 40 76, 28 76, 22 76
+          M 22 68
+          C 24 62, 26 55, 32 50
+          C 36 46, 40 43, 46 40
+          C 50 37, 54 35, 58 32
+          C 63 29, 68 27, 74 25
+          C 80 23, 86 22, 93 22
+          C 100 22, 107 23, 113 25
+          C 119 27, 124 30, 129 33
+          C 133 36, 136 39, 139 42
+          C 142 39, 145 36, 149 34
+          C 154 31, 158 30, 162 31
+          C 164 32, 166 33, 167 35
+          C 169 38, 168 41, 166 44
+          C 163 47, 159 49, 155 51
+          C 151 53, 147 54, 144 55
+          C 147 60, 149 65, 150 70
+          C 151 76, 150 82, 147 87
+          C 144 92, 139 96, 133 99
+          C 127 102, 120 103, 113 104
+          C 106 105, 98 104, 90 102
+          C 82 100, 74 96, 67 91
+          C 61 87, 55 82, 50 77
+          C 44 72, 36 69, 28 68
           Z
         "
-        fill={color}
-        opacity="0.95"
-      />
-      {/* Karpass peninsula (pointy bit top-right) */}
-      <path
-        d="
-          M 154 50
-          C 160 46, 168 42, 176 40
-          C 180 39, 183 40, 182 44
-          C 181 48, 175 52, 168 54
-          C 162 56, 156 57, 154 58
-          Z
-        "
-        fill={color}
-        opacity="0.9"
+        fill="none"
+        stroke={color}
+        strokeWidth="5"
+        strokeLinejoin="round"
+        strokeLinecap="round"
       />
     </svg>
   )
