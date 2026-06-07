@@ -1,15 +1,37 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaBed, FaBath, FaRulerCombined, FaCheck, FaArrowLeft, FaWhatsapp, FaPhone } from 'react-icons/fa'
-import { PROPERTIES } from '../data/properties'
+import { useAdmin } from '../context/AdminContext'
 
 export default function PropertyDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { content } = useAdmin()
+  const PROPERTIES = content?.properties || []
   const property = PROPERTIES.find(p => p.id === Number(id))
   const [activeImg, setActiveImg] = useState(0)
   const [lightbox, setLightbox] = useState(false)
+  const touchStartX = useRef(null)
+
+  function prev() { setActiveImg(i => (i - 1 + property.images.length) % property.images.length) }
+  function next() { setActiveImg(i => (i + 1) % property.images.length) }
+
+  function handleTouchStart(e) { touchStartX.current = e.touches[0].clientX }
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev() }
+    touchStartX.current = null
+  }
+  function handleImageClick(e) {
+    if (property.images.length <= 1) { setLightbox(true); return }
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    if (x < rect.width * 0.35) prev()
+    else if (x > rect.width * 0.65) next()
+    else setLightbox(true)
+  }
 
   if (!property) {
     return (
@@ -24,7 +46,7 @@ export default function PropertyDetailPage() {
   }
 
   const isRent = property.deal === 'mieten'
-  const similar = PROPERTIES.filter(p => p.id !== property.id && p.region === property.region).slice(0, 3)
+  const similar = (content?.properties || []).filter(p => p.id !== property.id && p.region === property.region).slice(0, 3)
   const whatsappMsg = encodeURIComponent(`Hallo, ich interessiere mich für "${property.title}" (ID ${property.id}) für ${isRent ? '€' + property.price.toLocaleString('de-DE') + '/Mo Miete' : '€' + property.price.toLocaleString('de-DE')}. Können Sie mir mehr Informationen geben?`)
 
   return (
@@ -45,25 +67,70 @@ export default function PropertyDetailPage() {
           <div>
             {/* Main image */}
             <motion.div
-              className="rounded-3xl overflow-hidden cursor-zoom-in mb-3 relative"
-              style={{ height: 480, boxShadow: '0 8px 40px rgba(0,0,0,0.12)' }}
+              className="rounded-3xl overflow-hidden mb-3 relative select-none"
+              style={{ height: 480, boxShadow: '0 8px 40px rgba(0,0,0,0.12)', cursor: property.images.length > 1 ? 'pointer' : 'zoom-in' }}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              onClick={() => setLightbox(true)}
+              onClick={handleImageClick}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
-              <img src={property.images[activeImg]} alt={property.title} className="w-full h-full object-cover" />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeImg}
+                  src={property.images[activeImg]}
+                  alt={property.title}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -40 }}
+                  transition={{ duration: 0.25 }}
+                  draggable={false}
+                />
+              </AnimatePresence>
+
+              {/* Tags */}
               <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
                 {property.tags.map(t => (
                   <span key={t} className="font-nunito font-700 text-xs px-3 py-1 rounded-full bg-white text-gray-700"
                     style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.12)' }}>{t}</span>
                 ))}
               </div>
+
+              {/* Deal badge */}
               <span className="absolute top-4 right-4 font-nunito font-800 text-xs px-4 py-1.5 rounded-full text-white"
                 style={{ background: isRent ? '#0ea5e9' : 'var(--site-btn, #1e1a16)' }}>
                 {isRent ? 'Mieten' : 'Kaufen'}
               </span>
+
+              {/* Prev / Next arrows */}
+              {property.images.length > 1 && (
+                <>
+                  <button
+                    onClick={e => { e.stopPropagation(); prev() }}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all"
+                    style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.2)' }}
+                  >‹</button>
+                  <button
+                    onClick={e => { e.stopPropagation(); next() }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all"
+                    style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.2)' }}
+                  >›</button>
+
+                  {/* Dot indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    {property.images.map((_, i) => (
+                      <button key={i} onClick={e => { e.stopPropagation(); setActiveImg(i) }}
+                        className="rounded-full transition-all duration-200"
+                        style={{ width: i === activeImg ? 20 : 6, height: 6, background: i === activeImg ? 'white' : 'rgba(255,255,255,0.45)' }} />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {/* Counter + zoom hint */}
               <div className="absolute bottom-4 right-4 font-nunito text-xs text-white px-3 py-1 rounded-full"
                 style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(8px)' }}>
-                🔍 Vergrößern
+                {property.images.length > 1 ? `${activeImg + 1} / ${property.images.length}` : '🔍 Vergrößern'}
               </div>
             </motion.div>
 
@@ -236,29 +303,58 @@ export default function PropertyDetailPage() {
       <AnimatePresence>
         {lightbox && (
           <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center"
-            style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(8px)' }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center select-none"
+            style={{ background: 'rgba(0,0,0,0.94)', backdropFilter: 'blur(10px)' }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setLightbox(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
-            <motion.img
-              src={property.images[activeImg]}
-              alt={property.title}
-              className="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={e => e.stopPropagation()}
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeImg}
+                src={property.images[activeImg]}
+                alt={property.title}
+                className="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl"
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -60 }}
+                transition={{ duration: 0.2 }}
+                onClick={e => e.stopPropagation()}
+                draggable={false}
+              />
+            </AnimatePresence>
+
+            {/* Close */}
             <button onClick={() => setLightbox(false)}
               className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white flex items-center justify-center font-nunito font-700 text-gray-700 text-lg">
               ✕
             </button>
-            <div className="absolute bottom-6 flex gap-3">
-              {property.images.map((img, i) => (
+
+            {/* Prev / Next */}
+            {property.images.length > 1 && (
+              <>
+                <button onClick={e => { e.stopPropagation(); prev() }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+                  style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}>‹</button>
+                <button onClick={e => { e.stopPropagation(); next() }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+                  style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}>›</button>
+              </>
+            )}
+
+            {/* Counter */}
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 font-nunito text-sm text-white font-700 px-4 py-1.5 rounded-full"
+              style={{ background: 'rgba(0,0,0,0.4)' }}>
+              {activeImg + 1} / {property.images.length}
+            </div>
+
+            {/* Dots */}
+            <div className="absolute bottom-6 flex gap-2">
+              {property.images.map((_, i) => (
                 <button key={i} onClick={e => { e.stopPropagation(); setActiveImg(i) }}
-                  className="w-3 h-3 rounded-full transition-all"
-                  style={{ background: activeImg === i ? 'white' : 'rgba(255,255,255,0.35)' }} />
+                  className="rounded-full transition-all duration-200"
+                  style={{ width: i === activeImg ? 24 : 8, height: 8, background: i === activeImg ? 'white' : 'rgba(255,255,255,0.35)' }} />
               ))}
             </div>
           </motion.div>
