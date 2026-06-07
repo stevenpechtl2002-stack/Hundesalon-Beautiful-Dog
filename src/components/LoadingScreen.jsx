@@ -1,34 +1,30 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-// Real paw print SVG path
-function PawPrint({ size = 120, color = 'var(--site-badge-bg, #c8beb4)' }) {
+function HouseIcon({ size = 120, color = 'var(--site-badge-bg, #c8beb4)' }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100">
-      {/* Toe pads — spread wide in an arc */}
-      {[
-        { cx: 18, cy: 52, rx: 10, ry: 12, delay: 0 },
-        { cx: 37, cy: 36, rx: 10, ry: 12, delay: 0.12 },
-        { cx: 63, cy: 36, rx: 10, ry: 12, delay: 0.24 },
-        { cx: 82, cy: 52, rx: 10, ry: 12, delay: 0.36 },
-      ].map((p, i) => (
-        <motion.ellipse
-          key={i} cx={p.cx} cy={p.cy} rx={p.rx} ry={p.ry}
-          fill={color}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: p.delay, duration: 0.4, type: 'spring', stiffness: 220 }}
-          style={{ transformOrigin: `${p.cx}px ${p.cy}px` }}
-        />
-      ))}
-      {/* Main pad — large kidney/heart shape */}
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
       <motion.path
-        d="M50,88 C36,88 26,79 26,68 C26,57 32,54 38,54 C42,54 46,56 50,59 C54,56 58,54 62,54 C68,54 74,57 74,68 C74,79 64,88 50,88 Z"
+        d="M50 12 L88 45 L88 90 L62 90 L62 65 L38 65 L38 90 L12 90 L12 45 Z"
         fill={color}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.52, duration: 0.5, type: 'spring', stiffness: 160 }}
-        style={{ transformOrigin: '50px 71px' }}
+        transition={{ delay: 0.1, duration: 0.5, type: 'spring', stiffness: 180 }}
+        style={{ transformOrigin: '50px 51px' }}
+      />
+      <motion.rect
+        x="40" y="55" width="20" height="20" rx="3"
+        fill="white" fillOpacity="0.6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.4 }}
+      />
+      <motion.path
+        d="M50 5 L95 45 H85 L50 13 L15 45 H5 Z"
+        fill={color}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.4, type: 'spring' }}
       />
     </svg>
   )
@@ -54,7 +50,7 @@ export default function LoadingScreen({ onComplete }) {
           className="fixed inset-0 z-[9998] flex flex-col items-center justify-center"
           style={{ background: 'var(--site-bg, #FAFAFA)' }}
         >
-          <PawPrint size={120} color="var(--site-badge-bg, #c8beb4)" />
+          <HouseIcon size={120} color="var(--site-badge-bg, #c8beb4)" />
 
           <motion.h1
             className="font-pacifico text-4xl mt-6"
@@ -63,7 +59,7 @@ export default function LoadingScreen({ onComplete }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
           >
-            Beautiful Dog
+            NordzypernImmo
           </motion.h1>
           <motion.p
             className="font-nunito text-gray-400 mt-2 text-sm tracking-widest uppercase"
@@ -71,7 +67,7 @@ export default function LoadingScreen({ onComplete }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.4 }}
           >
-            Hundesalon · Pforzheim
+            Nordzypern
           </motion.p>
         </motion.div>
       )}

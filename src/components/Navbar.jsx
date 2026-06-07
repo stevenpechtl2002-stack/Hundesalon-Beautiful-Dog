@@ -4,9 +4,9 @@ import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
 
 const links = [
+  { label: 'Objekte', href: '#leistungen' },
+  { label: 'Warum Nordzypern', href: '#ueber-uns' },
   { label: 'Leistungen', href: '#leistungen' },
-  { label: 'Über uns', href: '#ueber-uns' },
-  { label: 'Preise', href: '#preise' },
   { label: 'Bewertungen', href: '#bewertungen' },
   { label: 'Kontakt', href: '#buchen' },
 ]
@@ -35,16 +35,8 @@ export default function Navbar() {
     >
       {/* Logo */}
       <a href="#" className="flex items-center gap-2 group">
-        <motion.div whileHover={{ rotate: 15, scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
-          <svg width="32" height="32" viewBox="0 0 100 100">
-            {/* Toe pads — spread wide */}
-            <ellipse cx="18" cy="52" rx="10" ry="12" fill="#FFB5D8" />
-            <ellipse cx="37" cy="36" rx="10" ry="12" fill="#FFB5D8" />
-            <ellipse cx="63" cy="36" rx="10" ry="12" fill="#FFB5D8" />
-            <ellipse cx="82" cy="52" rx="10" ry="12" fill="#FFB5D8" />
-            {/* Main pad — kidney shape */}
-            <path d="M50,88 C36,88 26,79 26,68 C26,57 32,54 38,54 C42,54 46,56 50,59 C54,56 58,54 62,54 C68,54 74,57 74,68 C74,79 64,88 50,88 Z" fill="#FFB5D8" />
-          </svg>
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }} className="text-2xl">
+          🏠
         </motion.div>
         <span className="font-pacifico text-xl" style={{ color: scrolled ? '#333' : 'white' }}>
           <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'Beautiful Dog'}</EditableText>
@@ -72,7 +64,7 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Termin buchen 🐾
+          Kostenlos beraten 🏠
         </motion.a>
       </div>
 
@@ -121,7 +113,7 @@ export default function Navbar() {
               style={{ background: 'var(--site-btn, #1e1a16)' }}
               onClick={() => setOpen(false)}
             >
-              Termin buchen 🐾
+              Kostenlos beraten 🏠
             </a>
           </motion.div>
         )}

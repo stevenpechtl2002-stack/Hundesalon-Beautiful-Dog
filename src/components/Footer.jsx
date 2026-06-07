@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
 
-const PAW_POS = [
+const HOUSE_POS = [
   {x:8,y:25,r:-20,d:0},{x:16,y:65,r:15,d:0.4},{x:25,y:35,r:-10,d:0.8},
   {x:35,y:72,r:22,d:1.2},{x:47,y:18,r:-15,d:1.6},{x:55,y:58,r:10,d:2.0},
   {x:65,y:28,r:-18,d:2.4},{x:75,y:75,r:20,d:2.8},{x:85,y:42,r:-8,d:3.2},
@@ -18,18 +18,12 @@ export default function Footer() {
 
   return (
     <footer className="relative pt-20 pb-8 overflow-hidden" style={{ background:'linear-gradient(160deg,#1e1e2e,#12121a)' }}>
-      {PAW_POS.map((p,i) => (
-        <motion.div key={i} className="absolute pointer-events-none"
-          style={{ left:`${p.x}%`, top:`${p.y}%`, rotate:p.r }}
-          animate={{ opacity:[0,0.12,0] }}
+      {HOUSE_POS.map((p,i) => (
+        <motion.div key={i} className="absolute pointer-events-none text-white"
+          style={{ left:`${p.x}%`, top:`${p.y}%`, rotate:p.r, fontSize:16 }}
+          animate={{ opacity:[0,0.10,0] }}
           transition={{ duration:4, delay:p.d, repeat:Infinity, repeatDelay:9 }}>
-          <svg width="18" height="18" viewBox="0 0 100 100">
-            <ellipse cx="18" cy="52" rx="10" ry="12" fill="#FFB5D8"/>
-            <ellipse cx="37" cy="36" rx="10" ry="12" fill="#FFB5D8"/>
-            <ellipse cx="63" cy="36" rx="10" ry="12" fill="#FFB5D8"/>
-            <ellipse cx="82" cy="52" rx="10" ry="12" fill="#FFB5D8"/>
-            <path d="M50,88 C36,88 26,79 26,68 C26,57 32,54 38,54 C42,54 46,56 50,59 C54,56 58,54 62,54 C68,54 74,57 74,68 C74,79 64,88 50,88 Z" fill="#FFB5D8"/>
-          </svg>
+          🏠
         </motion.div>
       ))}
 
@@ -38,14 +32,8 @@ export default function Footer() {
 
           <motion.div variants={row} className="md:col-span-2">
             <div className="flex items-center gap-3 mb-5">
-              <svg width="34" height="34" viewBox="0 0 100 100">
-                <ellipse cx="18" cy="52" rx="10" ry="12" fill="#FFB5D8"/>
-                <ellipse cx="37" cy="36" rx="10" ry="12" fill="#FFB5D8"/>
-                <ellipse cx="63" cy="36" rx="10" ry="12" fill="#FFB5D8"/>
-                <ellipse cx="82" cy="52" rx="10" ry="12" fill="#FFB5D8"/>
-                <path d="M50,88 C36,88 26,79 26,68 C26,57 32,54 38,54 C42,54 46,56 50,59 C54,56 58,54 62,54 C68,54 74,57 74,68 C74,79 64,88 50,88 Z" fill="#FFB5D8"/>
-              </svg>
-              <h3 className="font-pacifico text-2xl" style={{ color:'#FFB5D8' }}>Hundesalon Beautiful Dog</h3>
+              <span className="text-3xl">🏠</span>
+              <h3 className="font-pacifico text-2xl" style={{ color:'var(--site-badge-bg, #c8beb4)' }}>NordzypernImmo</h3>
             </div>
             <p className="font-nunito text-gray-500 leading-relaxed mb-6 max-w-xs">
               <EditableText path="footer.tagline">{content.footer?.tagline || 'Pforzheims Premium Hundesalon — professionelle Pflege mit Liebe und Leidenschaft seit über 15 Jahren.'}</EditableText>
@@ -81,16 +69,18 @@ export default function Footer() {
                 </div>
               ))}
             </div>
-            <motion.a href="#buchen" className="inline-block mt-6 font-nunito font-700 text-sm px-5 py-2.5 rounded-xl text-white"
+            <motion.a href="#buchen" className="inline-block mt-6 font-nunito font-700 text-sm px-5 py-2.5 rounded-xl"
               style={{ background:'white', color:'var(--site-btn, #1e1a16)' }}
               whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}>
-              Jetzt buchen 🐾
+              Jetzt beraten 🏠
             </motion.a>
           </motion.div>
         </div>
 
         <motion.div variants={row} className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-nunito text-gray-600 text-xs">© 2025 Hundesalon Beautiful Dog. Alle Rechte vorbehalten.</p>
+          <p className="font-nunito text-gray-600 text-xs">
+            <EditableText path="footer.copyright" tag="span">{content.footer?.copyright || '© 2025 NordzypernImmo. Alle Rechte vorbehalten.'}</EditableText>
+          </p>
           <div className="flex gap-6 items-center">
             {['Impressum','Datenschutz','AGB'].map(l=>(
               <a key={l} href="#" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">{l}</a>

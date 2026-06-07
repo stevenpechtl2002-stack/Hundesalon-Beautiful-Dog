@@ -49,10 +49,10 @@ export default function About() {
           initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
           <div>
-            <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: '#B5EAD720', color: '#8dd5bb' }}>Über uns</span>
+            <span className="inline-block font-nunito text-xs font-700 tracking-[0.25em] uppercase mb-3 px-4 py-1.5 rounded-full" style={{ background: 'var(--site-badge-bg, #f0ede8)', color: 'var(--site-badge-text, #7a6e65)' }}>Über uns</span>
             <h2 className="font-pacifico text-3xl md:text-5xl text-gray-900 leading-tight mt-2">
               <EditableText path="about.title" tag="span">{about.title}</EditableText><br />
-              <span style={{ background: 'linear-gradient(135deg,#FFB5D8,#C5B5EA)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <span style={{ color: '#2a2520' }}>
                 <EditableText path="about.titleHighlight" tag="span">{about.titleHighlight}</EditableText>
               </span>
             </h2>
@@ -88,15 +88,15 @@ export default function About() {
           </div>
           <motion.div className="absolute -bottom-6 -left-6 glass-pink rounded-3xl px-5 py-4 shadow-lg"
             animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}>
-            <p className="font-pacifico text-lg" style={{ color: '#FFB5D8' }}>❤️ Seit über 15 Jahren</p>
-            <p className="font-nunito text-gray-500 text-xs font-600">Mit Liebe dabei</p>
+            <p className="font-pacifico text-lg" style={{ color: 'var(--site-btn, #1e1a16)' }}>🏡 Seit über 15 Jahren</p>
+            <p className="font-nunito text-gray-500 text-xs font-600">Ihr Partner vor Ort</p>
           </motion.div>
           <motion.div className="absolute -top-4 -right-4 glass rounded-2xl px-5 py-3 shadow-md"
             animate={{ y: [0, -6, 0] }} transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}>
             <p className="font-nunito font-800 text-gray-800">4.9 ⭐</p>
-            <p className="font-nunito text-gray-400 text-xs">387 Bewertungen</p>
+            <p className="font-nunito text-gray-400 text-xs">500+ Kunden</p>
           </motion.div>
-          <div className="absolute -z-10 -bottom-10 -right-10 w-60 h-60 rounded-full opacity-25" style={{ background: '#C5B5EA', filter: 'blur(60px)' }} />
+          <div className="absolute -z-10 -bottom-10 -right-10 w-60 h-60 rounded-full opacity-20" style={{ background: '#d4b896', filter: 'blur(60px)' }} />
         </motion.div>
       </div>
     </section>
