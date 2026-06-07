@@ -99,8 +99,8 @@ export default function Navbar() {
     >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2 group">
-        <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
-          <CyprusSvg color={logoColor} />
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }} className="text-2xl">
+          🏠
         </motion.div>
         <span className="font-pacifico text-xl" style={{ color: logoColor }}>
           <EditableText path="navbar.logo" tag="span">{content?.navbar?.logo || 'NordzypernImmo'}</EditableText>
