@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
-        pacifico: ['Pacifico', 'cursive'],
+        pacifico: ['Playfair Display', 'Georgia', 'serif'],
+        playfair: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
         rosa: '#FFB5D8',
