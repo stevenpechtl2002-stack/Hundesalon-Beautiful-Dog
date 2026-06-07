@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useAdmin } from '../context/AdminContext'
 import EditableText from './admin/EditableText'
 
@@ -82,9 +83,9 @@ export default function Footer() {
             <EditableText path="footer.copyright" tag="span">{content.footer?.copyright || '© 2025 NordzypernImmo. Alle Rechte vorbehalten.'}</EditableText>
           </p>
           <div className="flex gap-6 items-center">
-            {['Impressum','Datenschutz','AGB'].map(l=>(
-              <a key={l} href="#" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">{l}</a>
-            ))}
+            <Link to="/impressum" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">Impressum</Link>
+            <Link to="/datenschutz" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">Datenschutz</Link>
+            <Link to="/agb" className="font-nunito text-gray-600 text-xs hover:text-gray-400 transition-colors">AGB</Link>
           </div>
         </motion.div>
       </motion.div>

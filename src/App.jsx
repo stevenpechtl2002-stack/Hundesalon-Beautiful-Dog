@@ -18,6 +18,9 @@ import Footer from './components/Footer'
 import PropertiesPage from './pages/PropertiesPage'
 import PropertyDetailPage from './pages/PropertyDetailPage'
 import AdminInseratePage from './pages/AdminInseratePage'
+import ImpressumPage from './pages/ImpressumPage'
+import DatenschutzPage from './pages/DatenschutzPage'
+import AgbPage from './pages/AgbPage'
 
 function HomePage({ loaded, setLoaded }) {
   return (
@@ -55,6 +58,9 @@ export default function App() {
             <Route path="/immobilien" element={<PropertiesPage />} />
             <Route path="/immobilien/:id" element={<PropertyDetailPage />} />
             <Route path="/admin/inserate" element={<AdminInseratePage />} />
+            <Route path="/impressum" element={<ImpressumPage />} />
+            <Route path="/datenschutz" element={<DatenschutzPage />} />
+            <Route path="/agb" element={<AgbPage />} />
           </Routes>
         </div>
       </AdminProvider>
