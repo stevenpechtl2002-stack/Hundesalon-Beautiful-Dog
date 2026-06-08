@@ -24,7 +24,7 @@ export function AdminProvider({ children }) {
   }, [content?.colors])
 
   function login(pin) {
-    if (pin === '6008') {
+    if (pin === import.meta.env.VITE_ADMIN_PIN) {
       setIsAdmin(true)
       return true
     }
@@ -40,6 +40,31 @@ export function AdminProvider({ children }) {
       let obj = next
       for (let i = 0; i < keys.length - 1; i++) obj = obj[keys[i]]
       obj[keys[keys.length - 1]] = value
+      return next
+    })
+  }
+
+  function addProperty(prop) {
+    setContent(prev => {
+      const next = JSON.parse(JSON.stringify(prev))
+      const maxId = (next.properties || []).reduce((m, p) => Math.max(m, p.id), 0)
+      next.properties = [...(next.properties || []), { ...prop, id: maxId + 1 }]
+      return next
+    })
+  }
+
+  function updateProperty(id, prop) {
+    setContent(prev => {
+      const next = JSON.parse(JSON.stringify(prev))
+      next.properties = next.properties.map(p => p.id === id ? { ...p, ...prop } : p)
+      return next
+    })
+  }
+
+  function deleteProperty(id) {
+    setContent(prev => {
+      const next = JSON.parse(JSON.stringify(prev))
+      next.properties = next.properties.filter(p => p.id !== id)
       return next
     })
   }
@@ -74,7 +99,7 @@ export function AdminProvider({ children }) {
   }
 
   return (
-    <AdminContext.Provider value={{ isAdmin, login, logout, content, updateField, updateService, saveContent, saving, saveMsg }}>
+    <AdminContext.Provider value={{ isAdmin, login, logout, content, updateField, updateService, addProperty, updateProperty, deleteProperty, saveContent, saving, saveMsg }}>
       {children}
     </AdminContext.Provider>
   )
