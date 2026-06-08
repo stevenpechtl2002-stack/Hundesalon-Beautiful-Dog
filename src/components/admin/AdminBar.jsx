@@ -92,7 +92,7 @@ export default function AdminBar() {
     el => (inputRefs[3] = el),
   ]
 
-  function handleDigit(i, val) {
+  async function handleDigit(i, val) {
     const v = val.replace(/\D/g, '').slice(-1)
     const next = [...digits]
     next[i] = v
@@ -101,7 +101,8 @@ export default function AdminBar() {
     if (v && i < 3) inputRefs[i + 1]?.focus()
     if (next.every(d => d !== '') && next.join('').length === 4) {
       const pin = next.join('')
-      if (!login(pin)) {
+      const ok = await login(pin)
+      if (!ok) {
         setError(true)
         setDigits(['', '', '', ''])
         setTimeout(() => inputRefs[0]?.focus(), 50)

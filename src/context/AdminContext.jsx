@@ -23,11 +23,18 @@ export function AdminProvider({ children }) {
     r.style.setProperty('--site-bg', content.colors.bg || '#FAFAFA')
   }, [content?.colors])
 
-  function login(pin) {
-    if (pin === import.meta.env.VITE_ADMIN_PIN) {
-      setIsAdmin(true)
-      return true
-    }
+  async function login(pin) {
+    try {
+      const res = await fetch('/api/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin }),
+      })
+      if (res.ok) {
+        setIsAdmin(true)
+        return true
+      }
+    } catch {}
     return false
   }
 
