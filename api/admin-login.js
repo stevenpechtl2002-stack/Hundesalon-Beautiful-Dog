@@ -10,10 +10,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false })
   }
 
-  const adminPin = process.env.ADMIN_PIN
+  const adminPin = process.env.ADMIN_PASSWORD
   if (!adminPin) {
-    // Env var not configured — refuse login
-    return res.status(503).json({ ok: false, error: 'ADMIN_PIN not configured' })
+    return res.status(503).json({ ok: false, error: 'ADMIN_PASSWORD not configured' })
   }
 
   if (!pin || pin !== adminPin) {
