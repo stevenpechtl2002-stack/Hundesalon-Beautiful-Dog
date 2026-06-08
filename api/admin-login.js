@@ -1,14 +1,24 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
-  const { pin } = req.body
-  if (!pin || pin !== process.env.ADMIN_PIN) {
+  // Parse body manually in case auto-parsing is disabled
+  let pin
+  try {
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+    pin = body?.pin
+  } catch {
+    return res.status(400).json({ ok: false })
+  }
+
+  const adminPin = process.env.ADMIN_PIN
+  if (!adminPin) {
+    // Env var not configured — refuse login
+    return res.status(503).json({ ok: false, error: 'ADMIN_PIN not configured' })
+  }
+
+  if (!pin || pin !== adminPin) {
     return res.status(401).json({ ok: false })
   }
 
-  // Simple session token: HMAC-like value never exposed to client source
-  const secret = process.env.ADMIN_SECRET || 'fallback-secret'
-  const token = Buffer.from(`${secret}:${Date.now()}`).toString('base64url')
-
-  return res.status(200).json({ ok: true, token })
+  return res.status(200).json({ ok: true })
 }
