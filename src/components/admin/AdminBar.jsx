@@ -178,17 +178,14 @@ export default function AdminBar() {
 
   return (
     <>
-      <button
+      {/* Hidden trigger — invisible 40x40 area bottom-right corner */}
+      <div
         onClick={openLogin}
         style={{
-          position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
-          background: 'var(--site-btn, #1e1a16)',
-          color: 'white', border: 'none', borderRadius: 50,
-          width: 52, height: 52, fontSize: 20, cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.25)'
+          position: 'fixed', bottom: 0, right: 0, zIndex: 9999,
+          width: 40, height: 40, cursor: 'default',
         }}
-        title="Admin Login"
-      >🏠</button>
+      />
 
       {showLogin && (
         <div
