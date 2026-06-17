@@ -23,15 +23,29 @@ export default async function handler(req, res) {
   const imageUpdates = []
 
   async function extractImages(obj, pathPrefix) {
-    for (const key of Object.keys(obj)) {
-      if (typeof obj[key] === 'string' && obj[key].startsWith('data:image/')) {
-        const ext = obj[key].split(';')[0].split('/')[1]
-        const fileName = `public/images/${pathPrefix}-${key}.${ext}`
-        const base64Data = obj[key].split(',')[1]
-        imageUpdates.push({ fileName, base64Data })
-        obj[key] = `/images/${pathPrefix}-${key}.${ext}`
-      } else if (obj[key] && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
-        await extractImages(obj[key], `${pathPrefix}-${key}`)
+    if (Array.isArray(obj)) {
+      for (let i = 0; i < obj.length; i++) {
+        if (typeof obj[i] === 'string' && obj[i].startsWith('data:image/')) {
+          const ext = obj[i].split(';')[0].split('/')[1]
+          const fileName = `public/images/${pathPrefix}-${i}.${ext}`
+          const base64Data = obj[i].split(',')[1]
+          imageUpdates.push({ fileName, base64Data })
+          obj[i] = `/images/${pathPrefix}-${i}.${ext}`
+        } else if (obj[i] && typeof obj[i] === 'object') {
+          await extractImages(obj[i], `${pathPrefix}-${i}`)
+        }
+      }
+    } else {
+      for (const key of Object.keys(obj)) {
+        if (typeof obj[key] === 'string' && obj[key].startsWith('data:image/')) {
+          const ext = obj[key].split(';')[0].split('/')[1]
+          const fileName = `public/images/${pathPrefix}-${key}.${ext}`
+          const base64Data = obj[key].split(',')[1]
+          imageUpdates.push({ fileName, base64Data })
+          obj[key] = `/images/${pathPrefix}-${key}.${ext}`
+        } else if (obj[key] && typeof obj[key] === 'object') {
+          await extractImages(obj[key], `${pathPrefix}-${key}`)
+        }
       }
     }
   }
