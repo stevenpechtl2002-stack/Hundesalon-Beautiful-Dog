@@ -9,7 +9,7 @@ export function AdminProvider({ children }) {
   const [saveMsg, setSaveMsg] = useState('')
 
   useEffect(() => {
-    fetch('/content.json')
+    fetch(`/content.json?v=${Date.now()}`)
       .then(r => r.json())
       .then(setContent)
   }, [])
