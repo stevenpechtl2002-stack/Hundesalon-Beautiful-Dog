@@ -72,8 +72,27 @@ export function AdminProvider({ children }) {
     setContent(prev => {
       const next = JSON.parse(JSON.stringify(prev))
       next.properties = next.properties.filter(p => p.id !== id)
+      // Auto-save immediately after deletion
+      setTimeout(() => saveContentWith(next), 50)
       return next
     })
+  }
+
+  async function saveContentWith(overrideContent) {
+    setSaving(true)
+    setSaveMsg('')
+    try {
+      const res = await fetch('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: overrideContent, password: import.meta.env.VITE_ADMIN_PASSWORD }),
+      })
+      setSaveMsg(res.ok ? '✅ Gespeichert!' : '❌ Fehler beim Speichern.')
+    } catch {
+      setSaveMsg('❌ Netzwerkfehler.')
+    }
+    setSaving(false)
+    setTimeout(() => setSaveMsg(''), 4000)
   }
 
   function updateService(index, field, value) {
