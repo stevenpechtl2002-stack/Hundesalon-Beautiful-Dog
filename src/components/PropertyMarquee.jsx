@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaBed, FaBath, FaRulerCombined } from 'react-icons/fa'
-import { PROPERTIES } from '../data/properties'
+import { useAdmin } from '../context/AdminContext'
 
 function Card({ card }) {
   const isRent = card.deal === 'mieten'
@@ -56,8 +56,11 @@ function Card({ card }) {
 }
 
 export default function PropertyMarquee() {
-  const doubled = [...PROPERTIES, ...PROPERTIES]
+  const { content } = useAdmin()
+  const marqueeCards = (content?.properties || []).filter(p => p.inMarquee)
+  const doubled = marqueeCards.length > 0 ? [...marqueeCards, ...marqueeCards] : []
   const [paused, setPaused] = useState(false)
+  if (doubled.length === 0) return null
 
   return (
     <section className="py-20 overflow-hidden" style={{ background: 'white' }}>

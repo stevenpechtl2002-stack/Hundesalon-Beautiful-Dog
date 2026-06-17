@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaBed, FaBath, FaRulerCombined, FaHeart, FaRegHeart, FaSearch, FaChevronDown } from 'react-icons/fa'
-import { PROPERTIES as ALL_PROPERTIES } from '../data/properties'
+import { useAdmin } from '../context/AdminContext'
 
 const REGIONS = ['Alle Regionen', 'Kyrenia', 'Famagusta', 'Iskele', 'Nikosia']
 const PRICE_RANGES_KAUFEN = [
@@ -112,6 +112,8 @@ function Select({ value, onChange, options }) {
 }
 
 export default function PropertiesPage() {
+  const { content } = useAdmin()
+  const ALL_PROPERTIES = content?.properties || []
   const [deal, setDeal] = useState('kaufen')
   const [propType, setPropType] = useState('alle')
   const [region, setRegion] = useState('Alle Regionen')
