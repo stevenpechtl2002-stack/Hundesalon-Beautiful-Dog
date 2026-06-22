@@ -11,70 +11,20 @@ export default async function handler(req, res) {
   const repo = 'Hundesalon-Beautiful-Dog'
   const path = 'public/content.json'
 
-  // Get current file SHA
   const fileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-    headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'beautiful-dog-cms' }
+    headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'nordzypern-immo-cms' }
   })
   const fileData = await fileRes.json()
   const sha = fileData.sha
 
-  // Separate base64 images from content to save as files
-  const contentToSave = JSON.parse(JSON.stringify(content))
-  const imageUpdates = []
+  // Properties live in Supabase now — strip them before saving to content.json
+  const contentToSave = { ...content }
+  delete contentToSave.properties
 
-  async function extractImages(obj, pathPrefix) {
-    if (Array.isArray(obj)) {
-      for (let i = 0; i < obj.length; i++) {
-        if (typeof obj[i] === 'string' && obj[i].startsWith('data:image/')) {
-          const ext = obj[i].split(';')[0].split('/')[1]
-          const fileName = `public/images/${pathPrefix}-${i}.${ext}`
-          const base64Data = obj[i].split(',')[1]
-          imageUpdates.push({ fileName, base64Data })
-          obj[i] = `/images/${pathPrefix}-${i}.${ext}`
-        } else if (obj[i] && typeof obj[i] === 'object') {
-          await extractImages(obj[i], `${pathPrefix}-${i}`)
-        }
-      }
-    } else {
-      for (const key of Object.keys(obj)) {
-        if (typeof obj[key] === 'string' && obj[key].startsWith('data:image/')) {
-          const ext = obj[key].split(';')[0].split('/')[1]
-          const fileName = `public/images/${pathPrefix}-${key}.${ext}`
-          const base64Data = obj[key].split(',')[1]
-          imageUpdates.push({ fileName, base64Data })
-          obj[key] = `/images/${pathPrefix}-${key}.${ext}`
-        } else if (obj[key] && typeof obj[key] === 'object') {
-          await extractImages(obj[key], `${pathPrefix}-${key}`)
-        }
-      }
-    }
-  }
-
-  await extractImages(contentToSave, 'img')
-
-  // Upload images to GitHub
-  for (const { fileName, base64Data } of imageUpdates) {
-    const imgRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${fileName}`, {
-      headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'beautiful-dog-cms' }
-    })
-    const imgData = imgRes.ok ? await imgRes.json() : {}
-
-    await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${fileName}`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'beautiful-dog-cms' },
-      body: JSON.stringify({
-        message: `Admin: Bild aktualisiert (${fileName})`,
-        content: base64Data,
-        ...(imgData.sha ? { sha: imgData.sha } : {}),
-      })
-    })
-  }
-
-  // Save content.json
   const newContent = Buffer.from(JSON.stringify(contentToSave, null, 2)).toString('base64')
   const updateRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
     method: 'PUT',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'beautiful-dog-cms' },
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'nordzypern-immo-cms' },
     body: JSON.stringify({
       message: 'Admin: Inhalte aktualisiert',
       content: newContent,

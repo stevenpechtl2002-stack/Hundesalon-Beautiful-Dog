@@ -61,9 +61,7 @@ function ImageUploader({ images, onChange }) {
     if (files.length) processFiles(files)
   }
 
-  function removeImage(idx) {
-    onChange(images.filter((_, i) => i !== idx))
-  }
+  function removeImage(idx) { onChange(images.filter((_, i) => i !== idx)) }
 
   function moveImage(from, to) {
     if (to < 0 || to >= images.length) return
@@ -79,7 +77,6 @@ function ImageUploader({ images, onChange }) {
         Fotos ({images.length}/{MAX_PHOTOS}) — erstes Bild = Hauptbild
       </label>
 
-      {/* Drop zone */}
       {images.length < MAX_PHOTOS && (
         <div
           onDragOver={e => { e.preventDefault(); setDragging(true) }}
@@ -122,25 +119,20 @@ function ImageUploader({ images, onChange }) {
         </div>
       )}
 
-      {/* Preview grid */}
       {images.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10 }}>
           {images.map((src, i) => (
             <div key={i} style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', border: i === 0 ? '3px solid var(--site-btn, #1e1a16)' : '1.5px solid #e5e7eb', aspectRatio: '4/3' }}>
               <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-
-              {/* Main badge */}
               {i === 0 && (
                 <span style={{ position: 'absolute', top: 6, left: 6, fontSize: 10, fontWeight: 800, background: 'var(--site-btn, #1e1a16)', color: 'white', padding: '2px 7px', borderRadius: 6 }}>
                   HAUPT
                 </span>
               )}
-
-              {/* Controls */}
               <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transition: 'background 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.45)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 6px 6px', opacity: 0, transition: 'opacity 0.2s' }}
+                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px', opacity: 0, transition: 'opacity 0.2s' }}
                   ref={el => {
                     if (el) {
                       el.parentElement.addEventListener('mouseenter', () => el.style.opacity = '1')
@@ -200,23 +192,50 @@ function PropertyForm({ initial, onSave, onCancel }) {
     features: Array.isArray(initial?.features) ? initial.features.join(', ') : (initial?.features || ''),
     images: initial?.images || [],
   }))
+  const [uploading, setUploading] = useState(false)
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
-  function handleSave() {
+  async function uploadImages(images) {
+    const password = import.meta.env.VITE_ADMIN_PASSWORD
+    return Promise.all(images.map(async (img) => {
+      if (!img.startsWith('data:')) return img
+      const [meta, base64] = img.split(',')
+      const rawExt = meta.split(';')[0].split('/')[1]
+      const ext = rawExt === 'jpeg' ? 'jpg' : rawExt
+      const res = await fetch('/api/upload-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ base64, ext, password }),
+      })
+      if (!res.ok) throw new Error('Image upload failed')
+      const { url } = await res.json()
+      return url
+    }))
+  }
+
+  async function handleSave() {
     if (!form.title.trim()) return alert('Bitte Titel eingeben')
     if (!form.price) return alert('Bitte Preis eingeben')
-    onSave({
-      ...form,
-      price: Number(form.price),
-      rooms: Number(form.rooms) || 0,
-      baths: Number(form.baths) || 0,
-      sqm: Number(form.sqm) || 0,
-      year: Number(form.year) || new Date().getFullYear(),
-      floor: form.floor ? Number(form.floor) : null,
-      tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
-      features: form.features.split(',').map(s => s.trim()).filter(Boolean),
-    })
+    setUploading(true)
+    try {
+      const uploadedImages = await uploadImages(form.images)
+      await onSave({
+        ...form,
+        images: uploadedImages,
+        price: Number(form.price),
+        rooms: Number(form.rooms) || 0,
+        baths: Number(form.baths) || 0,
+        sqm: Number(form.sqm) || 0,
+        year: Number(form.year) || new Date().getFullYear(),
+        floor: form.floor ? Number(form.floor) : null,
+        tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+        features: form.features.split(',').map(s => s.trim()).filter(Boolean),
+      })
+    } catch {
+      alert('Fehler beim Hochladen der Bilder. Bitte erneut versuchen.')
+    }
+    setUploading(false)
   }
 
   return (
@@ -313,7 +332,6 @@ function PropertyForm({ initial, onSave, onCancel }) {
           </Inp>
         </div>
 
-        {/* IMAGE UPLOADER */}
         <div style={{ gridColumn: '1/-1', background: '#f8f7f5', borderRadius: 16, padding: 20 }}>
           <ImageUploader
             images={form.images}
@@ -341,12 +359,12 @@ function PropertyForm({ initial, onSave, onCancel }) {
       </div>
 
       <div style={{ display: 'flex', gap: 12, marginTop: 32, paddingTop: 24, borderTop: '1px solid #eee' }}>
-        <button onClick={handleSave} style={{
+        <button onClick={handleSave} disabled={uploading} style={{
           flex: 1, padding: '14px', borderRadius: 14, fontSize: 15, fontWeight: 800,
-          border: 'none', cursor: 'pointer',
-          background: 'var(--site-btn, #1e1a16)', color: 'white',
+          border: 'none', cursor: uploading ? 'not-allowed' : 'pointer',
+          background: uploading ? '#888' : 'var(--site-btn, #1e1a16)', color: 'white',
           boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-        }}>💾 Inserat speichern</button>
+        }}>{uploading ? '⏳ Bilder werden hochgeladen…' : '💾 Inserat speichern'}</button>
         <button onClick={onCancel} style={{
           padding: '14px 28px', borderRadius: 14, fontSize: 15, fontWeight: 700,
           border: '2px solid #e5e7eb', cursor: 'pointer', background: 'white', color: '#666',
@@ -358,7 +376,7 @@ function PropertyForm({ initial, onSave, onCancel }) {
 
 export default function AdminInseratePage() {
   const navigate = useNavigate()
-  const { isAdmin, content, addProperty, updateProperty, deleteProperty, saveContent, saving, saveMsg } = useAdmin()
+  const { isAdmin, content, addProperty, updateProperty, deleteProperty, saving, saveMsg } = useAdmin()
   const properties = content?.properties || []
   const [view, setView] = useState('list')
   const [confirmDelete, setConfirmDelete] = useState(null)
@@ -379,9 +397,9 @@ export default function AdminInseratePage() {
 
   const editingProperty = typeof view === 'number' ? properties.find(p => p.id === view) : null
 
-  function handleSave(data) {
-    if (view === 'new') addProperty(data)
-    else updateProperty(view, data)
+  async function handleSave(data) {
+    if (view === 'new') await addProperty(data)
+    else await updateProperty(view, data)
     setView('list')
   }
 
@@ -412,11 +430,6 @@ export default function AdminInseratePage() {
                 border: 'none', cursor: 'pointer', background: 'var(--site-btn, #1e1a16)', color: 'white',
               }}>+ Neues Inserat</button>
             )}
-            <button onClick={saveContent} disabled={saving} style={{
-              padding: '10px 22px', borderRadius: 12, fontSize: 14, fontWeight: 700,
-              border: '2px solid var(--site-btn, #1e1a16)', cursor: 'pointer',
-              background: saving ? '#eee' : 'white', color: 'var(--site-btn, #1e1a16)',
-            }}>{saving ? 'Speichert…' : '💾 Auf Website speichern'}</button>
           </div>
         </div>
       </div>
@@ -492,7 +505,7 @@ export default function AdminInseratePage() {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: '20px 20px 20px 0', justifyContent: 'center', minWidth: 160 }}>
                       <button onClick={() => setView(p.id)} style={{ padding: '10px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, border: '1.5px solid #e5e7eb', cursor: 'pointer', background: 'white', color: '#333' }}>✏️ Bearbeiten</button>
-                      <button onClick={() => updateProperty(p.id, { inMarquee: !p.inMarquee })} style={{ padding: '10px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, border: '1.5px solid', borderColor: p.inMarquee ? '#16a34a' : '#e5e7eb', cursor: 'pointer', background: p.inMarquee ? '#f0fdf4' : 'white', color: p.inMarquee ? '#16a34a' : '#aaa' }}>
+                      <button onClick={() => updateProperty(p.id, { ...p, inMarquee: !p.inMarquee })} style={{ padding: '10px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, border: '1.5px solid', borderColor: p.inMarquee ? '#16a34a' : '#e5e7eb', cursor: 'pointer', background: p.inMarquee ? '#f0fdf4' : 'white', color: p.inMarquee ? '#16a34a' : '#aaa' }}>
                         {p.inMarquee ? '✅ Im Laufband' : '⬜ Laufband ein'}
                       </button>
                       {confirmDelete === p.id ? (
