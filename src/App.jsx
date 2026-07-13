@@ -14,6 +14,7 @@ import PropertyMarquee from './components/PropertyMarquee'
 import Location from './components/Location'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
+import CookieBanner from './components/CookieBanner'
 import PropertiesPage from './pages/PropertiesPage'
 import PropertyDetailPage from './pages/PropertyDetailPage'
 import AdminInseratePage from './pages/AdminInseratePage'
@@ -51,6 +52,7 @@ export default function App() {
         <div className="font-nunito">
           <AdminBar />
           <Navbar />
+          <CookieBanner />
           <Routes>
             <Route path="/" element={<HomePage loaded={loaded} setLoaded={setLoaded} />} />
             <Route path="/immobilien" element={<PropertiesPage />} />
