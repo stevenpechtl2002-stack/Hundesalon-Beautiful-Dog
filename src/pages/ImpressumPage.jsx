@@ -19,8 +19,8 @@ export default function ImpressumPage() {
 
         <Section title="Kontakt">
           <p>Telefon: +49 152 51946226</p>
-          <p>E-Mail: info@nordzypernimmo.de</p>
-          <p>Website: www.nordzypernimmo.de</p>
+          <p>E-Mail: andreas.pechtl@nord-zypern-immo.com</p>
+          <p>Website: www.nord-zypern-immo.com</p>
         </Section>
 
         <Section title="Umsatzsteuer-ID">
