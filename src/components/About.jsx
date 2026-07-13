@@ -63,6 +63,21 @@ export default function About() {
             <EditableText path="about.text2" tag="p"><>{about.text2}</></EditableText>
           </div>
 
+          <a
+            href="https://pechtl.nord-zypern-immo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '12px 24px', borderRadius: 12, fontSize: 14, fontWeight: 800,
+              background: 'var(--site-btn, #1e1a16)', color: 'white',
+              textDecoration: 'none', fontFamily: 'Nunito, sans-serif',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.15)', width: 'fit-content',
+            }}
+          >
+            🏠 Mein Profil ansehen →
+          </a>
+
           <motion.div className="grid grid-cols-3 gap-4"
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
