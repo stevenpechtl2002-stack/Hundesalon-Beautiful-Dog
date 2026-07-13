@@ -11,7 +11,6 @@ import Services from './components/Services'
 import About from './components/About'
 import InteractiveSelector from './components/ui/interactive-selector'
 import PropertyMarquee from './components/PropertyMarquee'
-import Reviews from './components/Reviews'
 import Location from './components/Location'
 import Booking from './components/Booking'
 import Footer from './components/Footer'
@@ -35,7 +34,6 @@ function HomePage({ loaded, setLoaded }) {
         <Services />
         <About />
         <InteractiveSelector />
-        <Reviews />
         <Booking />
         <Location />
       </main>
