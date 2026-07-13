@@ -12,8 +12,8 @@ export default function ImpressumPage() {
         <Section title="Angaben zum Unternehmen">
           <p><strong>NordzypernImmo</strong></p>
           <p>Andreas Pechtl</p>
-          <p>Musterstraße 1</p>
-          <p>50667 Köln</p>
+          <p>Drosselweg 11</p>
+          <p>75175 Pforzheim</p>
           <p>Deutschland</p>
         </Section>
 
@@ -29,7 +29,7 @@ export default function ImpressumPage() {
 
         <Section title="Berufsbezeichnung und berufsrechtliche Regelungen">
           <p>Berufsbezeichnung: Immobilienmakler</p>
-          <p>Zuständige Aufsichtsbehörde: IHK Köln</p>
+          <p>Zuständige Aufsichtsbehörde: IHK Nordschwarzwald</p>
           <p>Erlaubnisinhaber gemäß § 34c GewO</p>
         </Section>
 
