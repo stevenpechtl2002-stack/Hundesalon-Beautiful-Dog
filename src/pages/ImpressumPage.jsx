@@ -23,10 +23,6 @@ export default function ImpressumPage() {
           <p>Website: www.nord-zypern-immo.com</p>
         </Section>
 
-        <Section title="Umsatzsteuer-ID">
-          <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: DE123456789</p>
-        </Section>
-
         <Section title="Berufsbezeichnung und berufsrechtliche Regelungen">
           <p>Berufsbezeichnung: Immobilienmakler</p>
           <p>Zuständige Aufsichtsbehörde: IHK Nordschwarzwald</p>
