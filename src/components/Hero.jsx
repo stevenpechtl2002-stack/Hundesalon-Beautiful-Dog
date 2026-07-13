@@ -63,7 +63,6 @@ export default function Hero() {
       className="relative flex flex-col items-center justify-center overflow-hidden"
       style={{ minHeight: '100vh', paddingTop: isAdmin ? 52 : 0 }}
     >
-      {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <EditableImage
           path="hero.image"
@@ -75,7 +74,6 @@ export default function Hero() {
             <div className="w-full h-full" style={{ background: 'linear-gradient(135deg, #1e3a5f, #0a1628)' }} />
           }
         />
-        {/* Layered gradient for text readability — dark left+bottom, lighter right */}
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to right, rgba(10,14,20,0.82) 0%, rgba(10,14,20,0.55) 55%, rgba(10,14,20,0.20) 100%)'
         }} />
@@ -84,11 +82,9 @@ export default function Hero() {
         }} />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 flex flex-col justify-center" style={{ minHeight: '100vh', paddingTop: 120, paddingBottom: 80 }}>
         <div className="max-w-2xl">
 
-          {/* Badge */}
           <motion.div {...fadeUp(0.1)} className="mb-8">
             <span className="inline-flex items-center gap-2 font-nunito font-600 text-xs tracking-[0.3em] uppercase px-5 py-2 rounded-full"
               style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.85)' }}>
@@ -96,7 +92,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             className="font-playfair leading-[1.08] mb-6 text-white"
             style={{ fontSize: 'clamp(2.8rem, 6vw, 6rem)', fontWeight: 700 }}
@@ -111,14 +106,12 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p {...fadeUp(0.4)}
             className="font-nunito font-400 leading-relaxed mb-10"
             style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)', color: 'rgba(255,255,255,0.70)', maxWidth: '42ch' }}>
             <EditableText path="hero.subtitle">{hero.subtitle}</EditableText>
           </motion.p>
 
-          {/* CTAs */}
           <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4 mb-14">
             <motion.a
               href="#buchen"
@@ -150,10 +143,8 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
-          {/* Divider */}
           <motion.div {...fadeUp(0.7)} style={{ width: 48, height: 1, background: 'rgba(255,255,255,0.25)', marginBottom: 32 }} />
 
-          {/* Stats row */}
           <motion.div {...fadeUp(0.8)} className="flex gap-12">
             <StatItem target={250} suffix="+" label="Immobilien" />
             <StatItem target={15} suffix=" J." label="Erfahrung" />
@@ -162,7 +153,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Floating badge — bottom right */}
       <motion.div
         className="absolute hidden md:flex items-center gap-3 px-5 py-3 rounded-2xl"
         style={{ right: '5%', bottom: '12%', background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.22)', boxShadow: '0 8px 32px rgba(0,0,0,0.18)' }}
@@ -179,7 +169,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ delay: 1.5, duration: 0.8 }}
