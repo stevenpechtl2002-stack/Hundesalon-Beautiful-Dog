@@ -7,7 +7,6 @@ import EditableText from './admin/EditableText'
 const ANCHOR_LINKS = [
   { label: 'Warum Nordzypern', href: '#ueber-uns' },
   { label: 'Leistungen', href: '#leistungen' },
-  { label: 'Bewertungen', href: '#bewertungen' },
   { label: 'Kontakt', href: '#buchen' },
 ]
 

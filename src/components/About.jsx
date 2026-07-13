@@ -106,11 +106,6 @@ export default function About() {
             <p className="font-pacifico text-lg" style={{ color: 'var(--site-btn, #1e1a16)' }}>🏡 Seit über 15 Jahren</p>
             <p className="font-nunito text-gray-500 text-xs font-600">Ihr Partner vor Ort</p>
           </motion.div>
-          <motion.div className="absolute -top-4 -right-4 glass rounded-2xl px-5 py-3 shadow-md"
-            animate={{ y: [0, -6, 0] }} transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}>
-            <p className="font-nunito font-800 text-gray-800">4.9 ⭐</p>
-            <p className="font-nunito text-gray-400 text-xs">500+ Kunden</p>
-          </motion.div>
           <div className="absolute -z-10 -bottom-10 -right-10 w-60 h-60 rounded-full opacity-20" style={{ background: '#d4b896', filter: 'blur(60px)' }} />
         </motion.div>
       </div>

@@ -148,7 +148,6 @@ export default function Hero() {
           <motion.div {...fadeUp(0.8)} className="flex gap-12">
             <StatItem target={250} suffix="+" label="Immobilien" />
             <StatItem target={15} suffix=" J." label="Erfahrung" />
-            <StatItem target={4.9} suffix="★" label="Bewertung" decimals={1} />
           </motion.div>
         </div>
       </div>
